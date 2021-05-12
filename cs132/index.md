@@ -54,8 +54,8 @@ points, nor are guaranteed to be correct.
 
 Handwritten solutions by **Clara Ramsay-Gray**:
 
-1. [x] [Digital logic](worksheets/assemblerHandwritten.pdf)
-2. [x] [Assembler](worksheets/digitalLogicHandwritten.pdf)
+1. [x] [Digital logic](worksheets/digitalLogicHandwritten.pdf)
+2. [x] [Assembler](worksheets/assemblerHandwritten.pdf)
 3. [ ] Memory systems
 4. [ ] I/O mechanisms
 5. [ ] Processor architecture
