@@ -1,0 +1,2110 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>126 One Page Notes | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="126 One Page Notes" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick" />
+<meta property="og:description" content="A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/cs126/opnotes" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/cs126/opnotes" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="126 One Page Notes" />
+<script type="application/ld+json">
+{"description":"A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick","headline":"126 One Page Notes","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/cs126/opnotes","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/cs126/opnotes"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">126 One Page Notes</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#arrays-and-lists">Arrays and Lists</a></li><li><a href="#arrays-adt">Arrays (ADT)</a></li><li><a href="#lists-adt">Lists (ADT)</a><ul><li><a href="#positional-lists-adt">Positional lists (ADT)</a></li><li><a href="#linked-lists-adt">Linked lists (ADT)</a><ul><li><a href="#singly-linked-lists-concrete-implementation">Singly linked lists (Concrete implementation)</a></li><li><a href="#doubly-linked-lists-concrete-implementation">Doubly linked lists (Concrete implementation)</a></li></ul></li></ul></li><li><a href="#binary-search-and-self-balancing-trees">Binary search and self-balancing trees</a></li><li><a href="#binary-search-trees">Binary search trees</a></li><li><a href="#avl-trees">AVL trees</a></li><li><a href="#graphs">Graphs</a></li><li><a href="#graphs">Graphs</a><ul><li><a href="#graphs-as-a-mathematical-concept">Graphs as a mathematical concept</a></li><li><a href="#graphs-as-an-adt">Graphs as an ADT</a></li></ul></li><li><a href="#depth-first-search">Depth-first search</a><ul><li><a href="#dfs-for-an-entire-graph">DFS for an entire graph:</a></li><li><a href="#path-finding-with-dfs">Path Finding with DFS</a></li><li><a href="#cycle-finding-with-dfs">Cycle Finding with DFS</a></li></ul></li></ul></li><li><a href="#breadth-first-search">Breadth-first search</a></li><li><a href="#directed-graphs">Directed graphs</a><ul><li><a href="#topological-ordering-using-dfs">Topological ordering using DFS</a></li></ul></li></ul></li><li><a href="#general-algorithms">General algorithms</a></li><li><a href="#searching-data-structures">Searching data structures</a></li><li><a href="#linear-search">Linear search</a></li><li><a href="#binary-search">Binary search</a></li><li><a href="#sorting-data-structures">Sorting data structures</a><ul><li><a href="#insertion-sort">Insertion sort</a></li><li><a href="#selection-sort">Selection sort</a></li><li><a href="#heap-sort">Heap sort</a></li><li><a href="#merge-sort">Merge sort</a></li></ul></li><li><a href="#reversing-data-structures">Reversing data structures</a></li><li><a href="#set-operations">Set operations</a></li><li><a href="#misc">Misc</a></li><li><a href="#analysis-of-algorithms">Analysis of algorithms</a></li><li><a href="#running-time">Running time</a></li><li><a href="#random-access-machine-ram-model">Random Access Machine (RAM) model</a></li><li><a href="#common-functions-of-running-time">Common functions of running time</a></li><li><a href="#big-o-notation">Big-O notation</a></li><li><a href="#recursive-algorithms">Recursive algorithms</a></li><li><a href="#definition-structure-and-examples">Definition, structure, and examples</a></li><li><a href="#types-of-recursion">Types of recursion</a></li><li><a href="#stacks-and-queues">Stacks and Queues</a></li><li><a href="#stacks-adt">Stacks (ADT)</a></li><li><a href="#queues-adt">Queues (ADT)</a></li><li><a href="#maps-hash-tables-and-sets">Maps, hash tables and sets</a></li><li><a href="#maps-adt">Maps (ADT)</a></li><li><a href="#hash-tables-concrete-implementation">Hash tables (Concrete implementation)</a></li><li><a href="#sets-adt">Sets (ADT)</a></li><li><a href="#trees">Trees</a></li><li><a href="#trees-adt">Trees (ADT)</a><ul><li><a href="#binary-trees-adt">Binary trees (ADT)</a></li></ul></li><li><a href="#priority-queues">Priority queues</a></li><li><a href="#priority-queues-adt">Priority queues (ADT)</a></li><li><a href="#heaps">Heaps</a></li><li><a href="#heaps-adt">Heaps (ADT)</a></li><li><a href="#skip-lists">Skip lists</a></li><li><a href="#goals-for-skip-lists">Goals for skip lists</a></li><li><a href="#skip-lists-as-an-adt">Skip lists as an ADT</a></li><li><a href="#searching">Searching</a></li><li><a href="#inserting">Inserting</a></li><li><a href="#deleting">Deleting</a></li><li><a href="#implementation">Implementation</a></li><li><a href="#performance">Performance</a></li><li><a href="#graph-related-pseudocode">Graph Related Pseudocode</a></li><li><a href="#depth-first-search-dfs">Depth First Search (DFS)</a><ul><li><a href="#dfs-for-a-particular-node-">DFS for a particular node: </a></li><li><a href="#dfs-for-an-entire-graph">DFS for an entire graph:</a></li><li><a href="#path-finding-with-dfs">Path Finding with DFS</a></li><li><a href="#cycle-finding-with-dfs">Cycle Finding with DFS</a></li></ul></li><li><a href="#breadth-first-search-bfs-pseudocode">Breadth First Search (BFS) Pseudocode</a><ul><li><a href="#directed-graphs">Directed graphs</a><ul><li><a href="#topological-ordering-using-dfs">Topological ordering using DFS</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="./">🏡CS126</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Layout for One Page Notes -->
+<!-- 
+    Works for all modules as long as they 
+    - Have part: true
+    - Are defined as a collection in _config.yml
+    - The folder name is "_[Module Code]"
+--><h1 id="arrays-and-lists">Arrays and Lists</h1>
+       
+        <h1 id="arrays-adt">Arrays (ADT)</h1>
+<ul>
+  <li>Indexable fixed length sequence of variables of the type, stored contiguously
+in memory</li>
+  <li>To get/set a value at an index in the array, directly look at the data at a
+memory address
+    <ul>
+      <li>\(O(1)\) operation</li>
+    </ul>
+  </li>
+  <li>To insert/delete an element, all the proceeding elements in the array need to
+be “shuffled up/down” to accommodate it
+    <ul>
+      <li>\(O(n)\) operation</li>
+    </ul>
+  </li>
+  <li>To resize the array, a new, larger contiguous block of memory needs to be
+allocated, then all the data copied into that
+    <ul>
+      <li>\(O(n)\) operation</li>
+    </ul>
+  </li>
+  <li>Fundamental operations
+    <ul>
+      <li>size(), isEmpty(), get(i), set(i,e)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="lists-adt">Lists (ADT)</h1>
+<ul>
+  <li>A list is called homogenous if it is all of the same type</li>
+  <li>Array based implementation  <strong>(Concrete)</strong>
+    <ul>
+      <li>Arrays provide all the required properties, except being able to change
+size. To “grow” an array, we make a new array of a larger size, and copy all
+the data across to it.</li>
+      <li>Need to decide how large the new array should be
+        <ul>
+          <li>Incremental strategy - when the capacity is exceeded, grow it by a
+constant number of elements \(c\)
+            <ul>
+              <li>Amortized (average) time of each push is \(\Omega(n^2)\)</li>
+              <li>Space grows linearly, so quite space efficient</li>
+            </ul>
+          </li>
+          <li>Doubling strategy - when the capacity is exceeded, double it
+            <ul>
+              <li>Amortized (average) time of each push is \(\Omega(n)\)</li>
+              <li>Space grows exponentially, so less space efficient</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Fundamental operations
+    <ul>
+      <li>size(), isEmpty(), get(i), set(i,e), add(i,e), remove(i)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="positional-lists-adt">Positional lists (ADT)</h2>
+<ul>
+  <li>“General abstraction of a sequence of elements with the ability to identify
+the location of an element, without indices” (<em>Data Structures and Algorithms
+in Java</em>, Goodrich, Tamassia, Goldwasser)</li>
+  <li>A “position” is a marker within the list, which is unaffected by changes
+elsewhere
+    <ul>
+      <li>Insertion/deletion of other elements doesn’t change it, the only time it
+changes is when it itself is deleted</li>
+    </ul>
+  </li>
+  <li>Fundamental operations
+    <ul>
+      <li>addFirst(e), addLast(e), addBefore(p,e), addAfter(p,e), set(p,e), remove(p)</li>
+    </ul>
+  </li>
+  <li>Generally implemented as a doubly linked list</li>
+</ul>
+
+<h2 id="linked-lists-adt">Linked lists (ADT)</h2>
+<ul>
+  <li>A collection of elements that can be accessed in a sequential way (not
+indexable)</li>
+  <li>Can more easily implement non-homogenous lists, as opposed to using arrays</li>
+  <li><a href="https://lucasmagnum.medium.com/sidenotes-linked-list-abstract-data-type-and-data-structure-fd2f8276ab53">Additional
+resource</a></li>
+</ul>
+
+<h3 id="singly-linked-lists-concrete-implementation">Singly linked lists (Concrete implementation)</h3>
+<ul>
+  <li>A sequence of nodes, each of which stores both a value and a pointer to the
+next node in the sequence. There is a pointer to the first node in the
+sequence, and the final node in the sequence is a null pointer \(\emptyset\)</li>
+  <li>To get/set a value at an arbitrary index in the array, need to iterate over
+the list from the head until the index is reached
+    <ul>
+      <li>\(O(n)\) operation</li>
+    </ul>
+  </li>
+  <li>Insertion/deletion to an arbitrary index is similar to getting/setting, but
+pointers are changed instead of values, either to bypass or include a new node
+in the sequence
+    <ul>
+      <li>\(O(n)\) operation</li>
+    </ul>
+  </li>
+  <li>Operations on the head of the list are \(O(1)\) operations</li>
+  <li>The list can only be traversed forwards</li>
+  <li>Fundamental operations
+    <ul>
+      <li>addFirst(e), addAfter(p,e), set(p,e), remove(p)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="doubly-linked-lists-concrete-implementation">Doubly linked lists (Concrete implementation)</h3>
+<ul>
+  <li>
+    <ul>
+      <li>A sequence of nodes, each of which stores both a value and a pointer to both
+the next and the previous node in the sequence. At each end there are
+special header and trailer nodes, which are just references to the first and
+last nodes in the sequence</li>
+      <li>As with singly linked lists, getting/setting and insertion/deletion are
+\(O(n)\) operations, needing to iterate from the start or the end of the list
+to get to the index</li>
+      <li>Operations on <strong>both</strong> the head and the tail of the list are \(O(1)\)
+operations</li>
+      <li>The list can be traversed <strong>both</strong> forwards and backwards</li>
+      <li>Fundamental operations (same as positional list, as it is a concrete
+implementation of it)
+        <ul>
+          <li>addFirst(e), addLast(e), addBefore(p,e), addAfter(p,e), set(p,e),
+remove(p)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h1 id="binary-search-and-self-balancing-trees">Binary search and self-balancing trees</h1>
+       
+        <h1 id="binary-search-trees">Binary search trees</h1>
+
+<ul>
+  <li>
+    <p>Binary search trees used as a concrete implementation of ordered maps, with items being stored in the tree ordered by their key</p>
+
+    <ul>
+      <li>Search tables are another concrete implementation of ordered maps, but instead use a sorted sequence, normally an array, which is searchable with binary search in \(O(log\ n)\), but requires \(O(n)\) for insertion and removal. This means they are only effective for either small maps, or cases where there are few insertions and deletions</li>
+    </ul>
+  </li>
+  <li>
+    <p>Supports nearest neighbour queries, finding next highest and next lowest items</p>
+  </li>
+  <li>
+    <p>Properties of binary search trees</p>
+
+    <ul>
+      <li>External nodes store no items</li>
+      <li>All left children of any internal node have a smaller key than their parent node</li>
+      <li>All right children of any internal node have a larger key than their parent node</li>
+      <li>In-order traversals yield a sequence of the keys in ascending order</li>
+    </ul>
+  </li>
+  <li>
+    <p>Searching</p>
+
+    <ul>
+      <li>
+        <p>Start at the root, and recursively proceed down the appropriate subtrees until the key or an external node is found</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Function Search(n, k)
+	If n is an external node
+		Return that the key is not in the tree
+	Else if the key being searched for is less than the value of the current node
+		Return Search called on the left child of n, and the same k
+	Else if the key being searched for is greater than the value of the current node
+		Return Search called on the right child of n, and the same k
+	Else (the key is equal to the one being search for)
+		Return that the key is in the tree
+    
+Let r &lt;- the root node of the tree to search
+Let k &lt;- the key to search for
+Search(r, k)
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Insertion</p>
+
+    <ul>
+      <li>Perform the searching operation, but when an external node is found, instead of returning that the key is not present, set that internal node as the key to insert, and give it two external child nodes</li>
+    </ul>
+  </li>
+  <li>
+    <p>Deletion</p>
+
+    <ul>
+      <li>If the node has no internal children
+        <ul>
+          <li>Replace it with an external key</li>
+        </ul>
+      </li>
+      <li>If the node has only one internal child
+        <ul>
+          <li>Overwrite it with that child</li>
+          <li>Discard the previous position of the child and its children,</li>
+          <li>Add two external nodes to it</li>
+        </ul>
+      </li>
+      <li>If the node has two internal children
+        <ul>
+          <li>Find the node that immediately follows it in an in-order traversal</li>
+          <li>Overwrite it with that node</li>
+          <li>Set that node to be external, and discard its left child, which must itself be an external node</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Performance</p>
+
+    <ul>
+      <li>In all cases, the space complexity is \(O(n)\)</li>
+      <li>The time complexity for searching, inserting and deleting is dependent on the height of the tree
+        <ul>
+          <li>If the tree is balanced, then the height is \(log\ n\), so the time for these operations is \(O(log\ n)\)</li>
+          <li>In the worst case, the tree can be totally unbalanced, just a straight line of internal nodes, in which case the height is \(n\), so the time for these operations is \(O(n)\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="avl-trees">AVL trees</h1>
+
+<ul>
+  <li>
+    <p>AVL trees are a concrete implementation of self-balancing binary search tree</p>
+
+    <ul>
+      <li>Insertion and deletion operations re-arrange the tree to ensure it remains balanced</li>
+      <li>Named after its creators, Adelson-Velsky and Landis</li>
+      <li>Other self-balancing binary search trees exist, such as red-black trees, but this is a common approach to implementing such an ADT</li>
+    </ul>
+  </li>
+  <li>
+    <p>Requirements to be a self-balancing binary search tree</p>
+
+    <ul>
+      <li>Each node has at most two child nodes</li>
+      <li>For every internal node in the tree, the heights of the child subtrees can differ by at most one</li>
+    </ul>
+  </li>
+  <li>
+    <p>These requirements ensure that the maximum height to store \(n\) keys is \(log\ n\), which can be proved by induction</p>
+  </li>
+  <li>
+    <p>Searching is approached as it is in a normal binary search tree</p>
+
+    <p><em>incomplete</em></p>
+  </li>
+  <li>
+    <p>Tri-node restructuring</p>
+  </li>
+  <li>
+    <p>Re-balancing VS restructuring</p>
+  </li>
+  <li>
+    <p>Insertion</p>
+  </li>
+  <li>
+    <p>Deletion</p>
+  </li>
+  <li>
+    <p>Performance</p>
+
+    <ul>
+      <li>In all cases, the space complexity is \(O(n)\)</li>
+      <li>Searching takes \(O(log\ n)\) time</li>
+      <li>Insertion and deletion are also \(O(log\ n)\), as searching for the element is \(O(log\ n)\), and then restructuring the tree to maintain the balance property is also \(O(log\ n)\)</li>
+    </ul>
+  </li>
+</ul>
+<br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="graphs">Graphs</h1>
+       
+        <h1 id="graphs">Graphs</h1>
+
+<h2 id="graphs-as-a-mathematical-concept">Graphs as a mathematical concept</h2>
+
+<ul>
+  <li>Defined the same as in CS130</li>
+  <li>A pair \(G = (V, E)\) were \(V\) is a set of vertices, and \(E\) is an unordered collection of pairs of vertices, called edges, for example: \(G = (\{a, b, c\}, [(a,b), (b,c), (c,a)])\)</li>
+  <li>Directed and undirected graphs
+    <ul>
+      <li>In undirected graphs, the edge pair indicates that both vertices are connected to each other</li>
+      <li>In directed graphs, the edge pair indicates that the first vertex is connected to the second, but not vice versa</li>
+    </ul>
+  </li>
+  <li>Terminology
+    <ul>
+      <li>Adjacent vertices - vertices with an edge between them</li>
+      <li>Edges incident on a vertex - edges which both connect to the same vertex</li>
+      <li>End vertices/endpoints - the two vertices in the pair that an edge connects to</li>
+      <li>Degree of a vertex - the number of edges that connect to a pair</li>
+      <li>Parallel edges - two edges both connecting the same nodes (reason why edges are an unordered collection, not a set)</li>
+      <li>Self-loop - an edge whose vertices are both the same</li>
+      <li>Path - a sequence of alternating vertices and edges, starting and ending in a vertex</li>
+      <li>Simple paths - paths containing no repeating vertices (hence are acyclic)</li>
+      <li>Cycle - a path starting and ending at the same vertex</li>
+      <li>Acyclic - a graph containing no cycles</li>
+      <li>Simple cycle - a path where the only repeated vertex is the starting/ending one</li>
+      <li>Length (of a path of cycle) - the number of edges in the path/cycle</li>
+      <li>Tree - a connected acyclic graph</li>
+    </ul>
+  </li>
+  <li>Graph properties
+    <ul>
+      <li>The sum of the degrees of the vertices in an undirected graph is an even number
+        <ul>
+          <li>Handshaking theorem - every edge must connect two vertices, so sum of degrees is twice the number of edges, which must be even</li>
+        </ul>
+      </li>
+      <li>An undirected graph with no self loops nor parallel edges, with number of edges \(m\) and number of vertices \(n\) fulfils the property \(m \leq \frac{n \cdot (n-1)}{2}\)
+        <ul>
+          <li>Pigeonhole principle - every vertex can connect to at most \(n-1\) vertices (all the rest of the vertices in the graph), then sum this for \(n\) vertices</li>
+          <li>Fully connected graphs fulfil the property \(m = \frac{n \cdot (n-1)}{2}\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="graphs-as-an-adt">Graphs as an ADT</h2>
+
+<ul>
+  <li>
+    <p>A collection of vertex and edge objects</p>
+  </li>
+  <li>
+    <p>Graphs have a large number of fundamental operations, to the extent it is unnecessary to enumerate them here, but they are essentially just accessor and mutator and count methods on the vertices and edges</p>
+  </li>
+  <li>
+    <p>There are three main concrete implementations of the graph ADT</p>
+
+    <ul>
+      <li>
+        <p>Edge list</p>
+
+        <ul>
+          <li>One list of vertices</li>
+          <li>One list of edges, each of which contain references to their endpoint vertices</li>
+        </ul>
+
+        <p><img src="C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\edgeListGraph.png" alt="edgeListGraph" /></p>
+      </li>
+      <li>
+        <p>Adjacency list</p>
+
+        <ul>
+          <li>Array containing a all of the nodes, each of which have a pointer to a list of the other nodes they connect to</li>
+        </ul>
+
+        <p><img src="C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\adjacencyListGraph.png" alt="adjacencyListGraph" /></p>
+      </li>
+      <li>
+        <p>Adjacency matrix</p>
+
+        <ul>
+          <li>2D array acts a lookup table for whether vertices have an edge connecting them</li>
+          <li>Square matrix, with each dimension being the number of vertices in the graph</li>
+          <li>Undirected graphs are symmetrical along the leading diagonal</li>
+        </ul>
+
+        <p><img src="C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\adjacencyMatrixGraph.png" alt="adjacencyMatrixGraph" /></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="depth-first-search">Depth-first search</h1>
+
+<p><strong>Algorithm</strong> $DFS(G, v)$ <br />
+     <strong>Input</strong>  graph $G$ and start at vertex $v$ of $G$<br />
+     <strong>Output</strong> labeling of the edges of $G$ in the connected component of v as discovery edges and back edges 
+<br />
+<br />
+     
+$setLabel(v, VISITED)$ <br />
+     
+<strong>for all</strong> $e \in G.incidentEdges(v)$ <br />
+         
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+            
+$w \leftarrow opposite(v,e)$ <br />
+            
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                
+$setLabel(e, DISCOVERY)$ <br />
+                
+$DFS(G, w)$ <br />
+            
+<strong>else</strong> <br />
+                
+$setLabel(e,BACK)$ <br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<h3 id="dfs-for-an-entire-graph">DFS for an entire graph:</h3>
+<p>The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures, which is used to perform depth first search on the entire graph.</p>
+
+<p><strong>Algorithm</strong> $DFS(G)$ <br />
+     <strong>Input</strong>  graph $G$ <br />
+     <strong>Output</strong> labelling of the edges of $G$ as discovery and back edges
+<br />
+<br />
+     <strong>for all</strong> $u \in G.vertices()$ <br />
+         <strong>$setLabel(u, UNEXPLORED)$</strong> <br /></p>
+
+<p>     <strong>for all</strong> $e \in G.edges()$ <br />
+         <strong>$setLabel(e, UNEXPLORED)$</strong> <br /></p>
+
+<p>     <strong>for all</strong> $u \in G.vertices()$ <br />
+         <strong>if $getLabel(u, UNEXPLORED)$</strong> <br />
+             $DFS(G, v)$ <br /></p>
+
+<p><strong>END ALGORITHM</strong>
+<br /></p>
+
+<p><strong>Algorithm</strong> $DFS(G, v)$ <br />
+     <strong>Input</strong>  graph $G$ and start at vertex $v$ of $G$<br />
+     <strong>Output</strong> labeling of the edges of $G$ in the connected component of v as discovery edges and back edges 
+<br />
+<br />
+     
+$setLabel(v, VISITED)$ <br />
+     
+<strong>for all</strong> $e \in G.incidentEdges(v)$ <br />
+         
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+            
+$w \leftarrow opposite(v,e)$ <br />
+            
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                
+$setLabel(e, DISCOVERY)$ <br />
+                
+$DFS(G, w)$ <br />
+            
+<strong>else</strong> <br />
+                
+$setLabel(e,BACK)$ <br /></p>
+
+<p><strong>END ALGORITHM</strong>
+<br /><br /><br /></p>
+
+<h3 id="path-finding-with-dfs">Path Finding with DFS</h3>
+
+<p>By using an alteration of the depth first search algorithm, we can use it to find a path between two given vertices, using the <strong>template method pattern</strong></p>
+
+<p><strong>Algorithm</strong>
+$pathDFS(G,v,z)$ <br />
+    
+$setLabel(v, VISITED)$ <br />
+    
+$S.push(v)$<br />
+    
+<strong>if</strong> $v=z$<br />
+        
+<strong>return</strong> $S.elements()$ <br />
+    
+<strong>for all</strong> $e \in G.incidentEdges(v)$<br />
+        
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+            
+$w \leftarrow opposite(v,e)$ <br />
+            
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                
+$setLabel(e,DISCORVERY)$ <br />
+                
+$S.push(e)$<br />
+                
+$pathDFS(G,w,z)$<br />
+                
+$S.pop(e)$<br />
+            
+<strong>else</strong><br />
+                
+$setLabel(e, BACK)$<br />
+        
+$S.pop(v)$<br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<p><br /><br /><br /></p>
+
+<h3 id="cycle-finding-with-dfs">Cycle Finding with DFS</h3>
+
+<ul>
+  <li>The algorithm for DFS can be adapted slightly in order to find a simply cycle back to the start node.</li>
+</ul>
+
+<p><strong>Algorithm</strong> $cycleDFS(G,v)$<br />
+    
+$setLabel(v,VISITED)$ <br />
+    
+$S.push(v)$ <br />
+    
+<strong>for all</strong> $e \in G.incidentEdges(v)$<br />
+        
+<strong>if</strong> $getLabel(e) = UNEXPLORED$<br />
+            
+$w \leftarrow opposite(v,e)$<br />
+            
+$S.push(e)$ <br />
+            
+<strong>if</strong> $getLabel(w)= UNEXPLORED$ <br />
+                
+<strong>if</strong> $setLabel(e,DISCOVERY)$ <br />
+                
+$cycleDFS(G,w)$ <br />
+                
+$S.pop(e)$<br />
+            
+<strong>else</strong> <br />
+                
+<strong>T</strong> $\leftarrow$ new empty stack <br />
+                
+<strong>repeat</strong><br />
+                    
+$o \leftarrow S.pop()$ <br />
+                    
+$T.push(o)$ <br />
+                
+<strong>until</strong> $o=w$<br />
+                
+<strong>return</strong> $T.elements()$ <br />
+    
+$S.pop(v)$<br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<h1 id="breadth-first-search">Breadth-first search</h1>
+
+<p><strong>Algorithm</strong> $BFS(G)$ <br />
+    
+<strong>Input</strong> graph $G$ <br />
+    
+<strong>Output</strong> labeling of the edges and partition of the vertices of G<br />
+    
+<strong>for all</strong> $e \in G.vertices()$ <br />
+        
+$setLabel(u, UNEXPLORED)$ <br />
+    
+<strong>for all</strong> $e \in G.edges()$ <br />
+        
+$setLabel(e, UNEXPLORED)$ <br />
+    
+<strong>for all</strong> $v \in G.vertices()$<br />
+        
+<strong>if</strong> $getLabel(v) = UNEXPLORED$ <br />
+            
+$BFS(G,v)$
+<br /></p>
+
+<p><strong>END ALGORITHM</strong>
+<br /><br /><br />
+<strong>Algorithm</strong> $BFS(G, s)$ <br />
+    
+$L_0 \leftarrow$ new empty sequence <br />
+    
+$L_0 .addLast(s)$  <br />
+    
+$setLabel(s, VISITED)$ <br />
+    
+$i \leftarrow 0$ <br />
+    
+<strong>while</strong> $¬L_i .isEmpty()$ <br />
+        
+$L_i+1 \leftarrow$ new empty sequence <br />
+        
+<strong>for all</strong> $v\in L_i .elements()$ <br />
+            
+<strong>for all</strong> $e \in G.incidentEdges(v)$ <br />
+                
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+                    
+$w \leftarrow opposite(v,e)$ <br />
+                    
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                        
+$setLabel(e) = (e, DISCOVERY)$ <br />
+                        
+$setLabel(w,VISITED)$ <br />
+                        
+$L_i+1 .addLast(w)$ <br />
+                    
+<strong>else</strong> <br />
+                        
+$setLabel(e,CROSS)$ <br />
+        
+$i \leftarrow i + 1$
+<br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<h1 id="directed-graphs">Directed graphs</h1>
+
+<p><strong>Algorithm</strong> $FloydWarshall(G)$ <br />
+    
+<strong>Input</strong> digraph $G$ <br />
+    
+<strong>Output</strong> transitive closure $G^*$ of $G$ <br /><br />
+    
+$i \leftarrow 1$ <br />
+    
+<strong>for all</strong> $v \in G.vertices()$ <br />
+        
+denote $v$ as $v_i$ <br />
+        
+$i \leftarrow i + 1$ <br />
+    
+$G_0 \leftarrow G$ <br />
+    
+<strong>for</strong> $k \leftarrow 1$ <strong>to</strong> $n$ <strong>do</strong><br />
+        
+$G_k \leftarrow G_{k-1}$ <br />
+            
+<strong>for</strong> $i\leftarrow 1$ <strong>to</strong> $n(i\neq k)$ <strong>do</strong> <br />
+                
+<strong>for</strong> $j \leftarrow 1$ <strong>to</strong> $n(j\neq i, k)$ <strong>do</strong> <br />
+                    
+<strong>if</strong> $G_{k-1}.areAdjacent(v_i,v_k)$  $\&amp;$ $G_{k-1}.areAdjacent(v_k,v_j)$ <br />
+                        
+<strong>if</strong> $¬G_{k-1}.areAdjacent(v_i,v_j)$ <br />
+                            
+$G_k.insertDirectedEdge(v_i,v_j,k)$<br />
+        
+<strong>return</strong> $G_n$
+<br /><br /><br /></p>
+
+<h3 id="topological-ordering-using-dfs">Topological ordering using DFS</h3>
+
+<p><strong>Algorithm</strong> $topologicalDFS(G)$ <br />
+    
+<strong>Input</strong> dag $G$<br />
+    
+<strong>Output</strong> topotlogical ordering of G <br /><br />
+    
+$n \leftarrow G.numVertices()$ <br />
+    
+<strong>for all</strong> $u\in G.vertices()$ <br />
+        
+$setLabel(,UNEXPLORED)$ <br />
+    
+<strong>for all</strong> $v\in G.vertices()$ <br />
+        
+<strong>if</strong> $getLabel(v) = UNEXPLORED$ <br />
+            
+$topologicalDFS(G,v)$
+<br /><br /><br />
+<strong>Algorithm</strong> $topologicalDFS(G,v)$ <br />
+    
+<strong>Input</strong> graph $G$ and start a vertex $v$ of $G$ <br />
+    
+<strong>Output</strong> labeling of the vertices of G in the connected component of $v$ <br /><br />
+    
+$setLabel(v, VISITED)$ <br />
+    
+<strong>for all</strong> $e\in G.outEdges(v)$  <br />
+        
+$w\in opposite(v,e)$ // Outgoing edges <br />
+        
+<strong>if</strong> $getLabel(w) = UNEXPLORED$  <br />
+            
+$topologicalDFS(G,w)$ // $e$ is a discovery edge<br />
+        
+<strong>else</strong> <br />
+            
+Label $v$ with topological number $n$ // $e$ is a forward or cross edge<br />
+        
+$n\leftarrow n - 1$ <br /></p>
+
+<br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="general-algorithms">General algorithms</h1>
+       
+        <h1 id="searching-data-structures">Searching data structures</h1>
+
+<h1 id="linear-search">Linear search</h1>
+<h1 id="binary-search">Binary search</h1>
+
+<h1 id="sorting-data-structures">Sorting data structures</h1>
+
+<h2 id="insertion-sort">Insertion sort</h2>
+<h2 id="selection-sort">Selection sort</h2>
+<h2 id="heap-sort">Heap sort</h2>
+<h2 id="merge-sort">Merge sort</h2>
+
+<h1 id="reversing-data-structures">Reversing data structures</h1>
+<ul>
+  <li>Reversing an array using a stack
+    <ul>
+      <li>Push all the items in array to the stack, then pop all the items off the stack into the new reversed array
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let S &lt;- the stack to reverse
+Let S' &lt;- an empty stack (the output)
+For each item in S
+	Pop the head off S into s
+	Push s to the head of S'
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Reversing a linked list
+    <ul>
+      <li>Iterate over the linked list from the head, and for each element in the list to reverse, set the item as the predecessor of the head in the new reversed list
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let L &lt;- the linked list to reverse
+Let L' &lt;- an empty linked list (the output)
+For each item in S
+	Let l &lt;- the first item in the linked list
+	Delete the first item in the linked list
+	Add l as the head of L'
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="set-operations">Set operations</h1>
+<ul>
+  <li>Generic merging
+    <ul>
+      <li>Taking the union of two sets, in linear time:
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let A, B &lt;- The lists to merge
+Let S &lt;- an empty list (the output)
+While neither A nor B are empty
+	Let a, b &lt;- The first elements of A and B respectively
+	If a &lt; b
+		Add a to the end of S
+		Remove a from A
+	Else if b &lt; a
+		Add b to the end of S
+		Remove b from B
+	Else (hence a=b)
+		Add a to the end of S (both are equal, so it doesn't matter which)
+		Remove a and b from A and B respectively
+(Cleaning up the other list when one is empty)
+While A is not empty
+	Add all the items left in A to the end of S
+While B is not empty
+	Add all the items left in B to the end of S
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="misc">Misc</h1>
+<ul>
+  <li>Computing spans
+    <ul>
+      <li>The span of an array is the maximum number of consecutive elements less than a value at an index which precede it
+This can be calculated in linear time by
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let X &lt;- the array to find spans of
+Let S &lt;- a stack of all the indices in X
+Let i be the current index
+Pop indices from the stack until we find index j such that X[i] &lt; X[j]
+Set S[i] &lt;- i-j
+Push i to the stack
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Fibonacci</li>
+  <li>Exponential time</li>
+  <li>Linear time</li>
+</ul>
+<h1 id="analysis-of-algorithms">Analysis of algorithms</h1>
+       
+        <p><br /></p>
+
+<h1 id="running-time">Running time</h1>
+
+<ul>
+  <li>To assess how good an algorithm is, we often use the metric of running time compared with the size of the input to the algorithm</li>
+  <li>There are three types of running times which can be assessed:
+    <ul>
+      <li>Worst case - which we focus on here, since it is both easy to analyse and useful</li>
+      <li>Average case - which is often more difficult to assess</li>
+      <li>Best case - often not sufficiently representative of the algorithm</li>
+    </ul>
+  </li>
+  <li>We can try to assess the running times in two ways:
+    <ul>
+      <li>Experimental trials
+        <ul>
+          <li>Writing a program implementing the algorithm, then running for inputs of different sizes. We can then fit curves to a plot of the results to try to classify the algorithm</li>
+          <li>This has various drawbacks, including:
+            <ul>
+              <li>Need to implement the algorithm, which might be difficult, or the reason for the analysis is to decide which one to implement</li>
+              <li>Not all inputs can be covered, so not necessarily representative</li>
+              <li>Dependent on machine hardware and software environments, so difficult to equate between different tests, since same specs are needed</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Theoretical analysis
+        <ul>
+          <li>Given a high-level description of the algorithm (not a full implementation), expresses the running time as a function of the input size \(n\)
+            <ul>
+              <li>Pseudocode is used for this high-level description, which lies between English prose and program code. It has no formal syntax, and allows omission of some aspects of the implementation to make analysis easier</li>
+            </ul>
+          </li>
+          <li>This has the benefits of:
+            <ul>
+              <li>Allowing all possible inputs to be covered</li>
+              <li>Being independent of machine hardware and software environments, so easier to equate between different tests</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="random-access-machine-ram-model">Random Access Machine (RAM) model</h1>
+
+<ul>
+  <li>To analyse programs, we use a simplified model of how computers work to help think about the time an high level operation takes to run by expressing it as fundamental operations which are equivocal to real computers</li>
+  <li>In the RAM model, we consider a computer with:
+    <ul>
+      <li>A single CPU executing a single program</li>
+      <li>An arbitrarily large indexable array of memory</li>
+      <li>A set of registers memory can be copied into</li>
+      <li>Basic arithmetic and memory allocation operations</li>
+    </ul>
+  </li>
+  <li>Generally, we tend to abstract beyond this model to just consider a set of “primitive operations” which take constant time irrespective of input size in the RAM model
+    <ul>
+      <li>Generally single lines of pseudocode, but not always</li>
+    </ul>
+  </li>
+  <li>We can then analyse performance by counting the number of operations needed, as their number is proportional to running time</li>
+  <li>We can then express the running time of the program as being between the best and worst cases of number of operations needed, multiplied their running time
+    <ul>
+      <li>Let \(T(n)\) denote the running time, $b(n)$ the best case number of operations, \(w(n)\) the worst case, and \(t\) the time taken for one primitive operation</li>
+      <li>Then, the running time is bounded as \(t \cdot b(n) \leq T(n) \leq t \cdot w(n)\)</li>
+      <li>This metric of running time \(T(n)\) is <strong>not</strong> dependent on machine hardware or software environment, instead is an intrinsic property of the algorithm</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="common-functions-of-running-time">Common functions of running time</h1>
+
+<ul>
+  <li>Good
+    <ul>
+      <li>Constant, \(1\)</li>
+      <li>Logarithmic, \(log\ n\)</li>
+      <li>Linear, \(n\)</li>
+      <li>N-log-N, \(n \cdot log\ n\)</li>
+    </ul>
+  </li>
+  <li>Bad
+    <ul>
+      <li>Quadratic, \(n^2\)</li>
+      <li>Cubic, \(n^3\)</li>
+      <li>Polynomial, \(\sum_i (a_i \cdot x^i)\)</li>
+      <li>Exponential, \(a^n, \exists a&gt;1\)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="big-o-notation">Big-O notation</h1>
+
+<ul>
+  <li>
+    <p>Formal definition</p>
+
+    <blockquote>
+      <p>Given functions \(f(n)\) and \(g(n)\), we say that \(f(n)\) is \(O(g(n))\) if:</p>
+
+      <p>There exist positive constants \(c\) and \(n_0\) such that \(f(n) \leq c \cdot g(n)\) for \(n \geq n_0\)</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Informally, this means that means that \(f(n)\) will be “overtaken” by $g(n)$ for all values above some threshold \(n_0\), allowing scaling by a linear factor \(c\)</p>
+
+    <ul>
+      <li>”\(f(n)\) is  \(O(g(n))\) if \(g(n)\) grows as fast or faster than \(f(n)\) in the limit of \(n \rightarrow \infty\)” <a href="https://math.stackexchange.com/a/620150">source</a></li>
+    </ul>
+  </li>
+  <li>
+    <p>Examples (<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</p>
+
+    <ul>
+      <li>
+        <blockquote>
+          <p>Consider the function \(2n+10\), to show that it is \(O(n)\), we take:</p>
+
+          <p>​	$2n+10 \leq c \cdot n$</p>
+
+          <p>​	\((c-2) \cdot n \geq 10\)</p>
+
+          <p>​	\(n \geq 10/(c-2)\)</p>
+
+          <p>Hence, picking \(c=3\) and \(n_0 = 10\), so the condition is satisfied</p>
+        </blockquote>
+
+        <p><img src="./images/bigOh.png" alt="bigOh" /></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>To prove something is not \(O(n)\), we show that there is no \(c\) for any arbitrarily large \(n_0\) which satisfies the condition</p>
+  </li>
+  <li>
+    <p>Big-O notation gives an upper bound on the growth rate of a function as its input size \(n\) tends to infinity</p>
+
+    <ul>
+      <li>Hence, \(f(n)\) is \(O(g(n))\) means that the growth rate of \(f(n)\) is no greater than that of the growth rate of \(g(n)\)</li>
+    </ul>
+  </li>
+  <li>
+    <p>Informally, the Big-O of a function is the term within a function which grows fastest</p>
+
+    <ul>
+      <li>This is because that term will come to “dominate” for very large \(n\), and we then just pick \(n_0\) where that term is dominating, and use \(c\) to shift the function to fit</li>
+    </ul>
+  </li>
+  <li>
+    <p>This gives rise to some rules to quickly evaluate the Big-O without going through the mathematical procedure</p>
+
+    <ul>
+      <li>If \(f(n)\) is a polynomial of degree \(d\), then \(f(n)\) is \(O(n^d)\)
+        <ul>
+          <li>This comes from dropping all but the fastest growing term, as it comes to dominate for large \(n\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>When writing Big-O, we:</p>
+
+    <ul>
+      <li>Try to use the smallest possible class of functions which fulfills the criteria, e.g. \(O(n)\) not \(O(n^2)\), whilst both technically are Big-O of linear functions</li>
+      <li>Use the simplest expression of the class, e.g. \(O(n)\), not \(O(5n)\)</li>
+    </ul>
+  </li>
+  <li>Asymptotic algorithm analysis is a way we can take pseudocode and use it to find the Big-O of an algorithm
+    <ul>
+      <li>We first consider the worst-case number of primitive operations that the algorithm could require to run as a function of its input size</li>
+      <li>We then express this derived function in Big-O notation</li>
+    </ul>
+  </li>
+  <li>There are other “relatives” of Big-O notation
+    <ul>
+      <li>Big-O gives the upper bound
+        <ul>
+          <li>\(f(n) \leq g(n)\) in the limit of \(n \rightarrow \infty\)</li>
+        </ul>
+      </li>
+      <li>Big-Omega gives the lower bound
+        <ul>
+          <li>\(f(n) \geq g(n)\) in the limit of \(n \rightarrow \infty\)</li>
+        </ul>
+      </li>
+      <li>Big-Theta gives “asymptotically tight” \(\approx\) average
+        <ul>
+          <li>\(f(n) = g(n)\) in the limit of \(n \rightarrow \infty\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><a href="https://courses.cs.washington.edu/courses/cse326/06au/lectures/lect03.pdf">Additional notes</a></p>
+<h1 id="recursive-algorithms">Recursive algorithms</h1>
+       
+        <p><br /></p>
+
+<h1 id="definition-structure-and-examples">Definition, structure, and examples</h1>
+
+<ul>
+  <li>Recursion can be defined in various ways:
+    <ul>
+      <li>“When a method calls itself” (<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</li>
+      <li>“A method which is expressed in terms of calls to simpler cases of itself, and a base case” (<em>crsg-guide</em>, Edmund Goodman)
+        <ul>
+          <li>It’s a recursive reference, get it? :upside_down_face:</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Recursive functions contain two main components
+    <ul>
+      <li>Base cases
+        <ul>
+          <li>Simple input values where the return value is a known constant, so no recursive calls are made</li>
+          <li>These are required for a recursive function to finish evaluating, so there must be at least one</li>
+        </ul>
+      </li>
+      <li>Recursive calls
+        <ul>
+          <li>Calls to the same recursive function, with a simpler input (since it must “move towards” the base case for it to ever finish evaluating)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>We can express binary search as a recursive function, with:
+    <ul>
+      <li>The input being a list,</li>
+      <li>The recursive call being the half of the list the search has been narrowed down to</li>
+      <li>The base cases being a single item, returning the index of that item if it is the item being searched for, or an indicator of absence if not</li>
+    </ul>
+  </li>
+  <li>We can visualise recursion by drawing diagrams of functions, with functions as boxes and arrows indicating calls and return values</li>
+</ul>
+
+<h1 id="types-of-recursion">Types of recursion</h1>
+
+<ul>
+  <li>Linear recursion
+    <ul>
+      <li>Each functional call makes only one recursive call (there may be multiple different possible calls, but only one is selected), or none if it is a base case</li>
+    </ul>
+  </li>
+  <li>Binary/multiple recursion
+    <ul>
+      <li>Each functional call makes two/multiple recursive calls, unless it is a base case</li>
+    </ul>
+  </li>
+</ul>
+<h1 id="stacks-and-queues">Stacks and Queues</h1>
+       
+        <h1 id="stacks-adt">Stacks (ADT)</h1>
+<ul>
+  <li>A “Last in, first out” (LIFO) data structure - both insertions and deletions occur at the front of the stack</li>
+  <li>Two fundamental operations
+    <ul>
+      <li>push(e), pop(), size(), isEmpty()</li>
+    </ul>
+  </li>
+  <li>Edge case of popping from an empty stack, normally either returns null or throws an error</li>
+  <li>Array based implementation  <strong>(Concrete)</strong>
+    <ul>
+      <li>Index of head stored, and incremented/decremented on pushing/popping operations</li>
+      <li>\(O(n)\) space complexity</li>
+      <li>\(O(1)\) time complexity of fundamental operations</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="queues-adt">Queues (ADT)</h1>
+<ul>
+  <li>A “First in, first out” (FIFO) data structure - insertions occur at the rear and removals at the front of the queue</li>
+  <li>Fundamental operations
+    <ul>
+      <li>enqueue(e), dequeue(), size(), isEmpty()</li>
+    </ul>
+  </li>
+  <li>Edge case of dequeuing from an empty queue, normally either returns null or throws an error</li>
+  <li>Array based implementation <strong>(Concrete)</strong>
+    <ul>
+      <li>Uses and array with data wrapping around as it is added and removed. Both the index of the head \(f\) <strong>and</strong> the size of the queue \(s\) need to be stored</li>
+      <li>The rear of the queue (index to next insert to) is \((f + s)\ MOD\ N\), with \(N\) as the array size
+<img src="./images/queueArrayImplementation.png" alt="queueArrayImplementation" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+      <li>\(O(n)\) space complexity</li>
+      <li>\(O(1)\) time complexity of fundamental operations</li>
+    </ul>
+  </li>
+</ul>
+<h1 id="maps-hash-tables-and-sets">Maps, hash tables and sets</h1>
+       
+        <h1 id="maps-adt">Maps (ADT)</h1>
+<ul>
+  <li>“Searchable collection of key-value entries” (<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</li>
+  <li>Duplicate keys cannot exist</li>
+  <li>Fundamental operations
+    <ul>
+      <li>contains(e), get(e), put(e), remove(e), size(), isEmpty() <em>sometimes additional operations for getting lists of all keys or all values</em></li>
+    </ul>
+  </li>
+  <li>Two concrete implementations
+    <ul>
+      <li>List based implementation
+        <ul>
+          <li>\(O(n)\) lookup and insertion (need to check for duplicates) time</li>
+          <li>\(O(n)\) space complexity</li>
+        </ul>
+      </li>
+      <li>Hash table based implementation
+        <ul>
+          <li>\(O(1)\) lookup and insertion time</li>
+          <li>\(O(k \cdot n)\) space complexity (still linear with number of items, but larger by a big constant factor)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="hash-tables-concrete-implementation">Hash tables (Concrete implementation)</h1>
+<ul>
+  <li>Time efficient implementation of the Map abstract data type</li>
+  <li>To look up keys in \(O(1)\) time, we want essentially want to be able to index an array of them, but the space of keys are far too large to conceivably keep one element in the array for each key</li>
+  <li>Hash functions
+    <ul>
+      <li>We use a “hash function” to reduce the size of the keyspace, so we can used the hashed outputs of keys for indices in the array storing the map</li>
+      <li>A hash function \(h : keys \rightarrow indices\) maps keys of a given type to integers in a fixed interval \([0, N-1]\) where \(N\) is the size of the array to store the items in</li>
+      <li>Modern implementations of hash functions are very complicated, and often involve two phases, first mapping keys to integers, then reducing the range of those integers, but simpler ones exist, for example \(h(x) =  x\ MOD\ N\)
+        <ul>
+          <li>We try to pick \(N\) such that there are fewer collisions - numbers with few factors are better</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Collisions are when two different keys are mapped to the same index by the hash function. Since we cannot store duplicate keys unambiguously in a map, we need a protocol to resolve this. Common approaches are
+    <ul>
+      <li>Separate chaining
+        <ul>
+          <li>Each index in the array can contain a reference to a linked list. Whenever a key is mapped to that index, the key-value pair is added to the linked-list. If there are duplicates, we iterate over the chain till we find the key, or reach the end
+<img src="./images/separateChaining.png" alt="separateChaining" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+          <li>This has the drawback of requiring additional memory space for each linked list</li>
+        </ul>
+      </li>
+      <li>Linear probing
+        <ul>
+          <li>When colliding items are placed in different cells in the table, it is called “open addressing”</li>
+          <li>Linear probing handles collisions by placing the colliding item in the next available table cell, wrapping around if necessary</li>
+          <li>As with the linked list, searching is done by iterating over the next cells, stopping when the item is found, or an empty cell in the table is reached</li>
+          <li>This has the drawback of colliding items “lumping together”, which can cause many items needed to be iterated over in a probe</li>
+          <li>To remove an item, we cannot just set it to null again, as that would mean it stops probing, even though there might be subsequent elements. Instead, we replace it with a “DEFUNCT” element, which is just skipped over when probing</li>
+        </ul>
+      </li>
+      <li>Double hashing
+        <ul>
+          <li>When a collision occurs, the key is re-hashed with a new hash function
+            <ul>
+              <li>Sometimes \([h(k) + i \cdot f(k)]\ MOD\ N\) where \(h\) and \(f\) are hashing functions, and \(i \in \mathbb{Z}\) is used</li>
+              <li>As before, there are many implementations of the hash function, but \(f(k)= q-k\ MOD\ q \quad \| \quad q&lt;N, q \in primes\)</li>
+            </ul>
+          </li>
+          <li>Searching is similar to linear probing, but when iterating we look at the hash value for each \(i\), rather than just the next index in the table</li>
+          <li>This helps avoid the issue of colliding items “lumping together” as in linear probing</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Resizing a hash table
+    <ul>
+      <li>As with arrays, we create a new table of a larger size, then iterate over every index in the table, and apply the standard add operation to add it to the new one (re-hashing)</li>
+    </ul>
+  </li>
+  <li>Performance of hash tables
+    <ul>
+      <li>The load factor of a hash table is the ratio of the number of items it contains to the capacity of the array \(\alpha = \frac{n}{N}\)
+        <ul>
+          <li>If this approaches \(1\), the table becomes inefficient, so we often re-size the table whenever it exceeds a certain value, e.g. \(0.75\)</li>
+        </ul>
+      </li>
+      <li>Time complexity of insertion/lookup
+        <ul>
+          <li>\(\Theta(1)\) best case</li>
+          <li>\(O(n)\) worst case</li>
+          <li>“Expected” number of probes with open addressing is \(\frac{1}{1-\alpha}\)</li>
+        </ul>
+      </li>
+      <li>In practice, hash tables are a very efficient implementation of maps assuming the load factor is not very close to \(1\)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="sets-adt">Sets (ADT)</h1>
+<ul>
+  <li>“A set is an unordered collection of elements, without duplicates that typically supports efficient membership tests” <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+  <li>Fundamental operations
+    <ul>
+      <li>add(e), remove(e), contains(e), size(e), isEmpty(e)</li>
+    </ul>
+  </li>
+  <li>Set operations
+    <ul>
+      <li>union(s1, s2), intersection(s1, s2), difference(s1, s2)</li>
+    </ul>
+  </li>
+  <li>Two concrete implementations
+    <ul>
+      <li>Can be implemented with a linked list (for efficient resizing, and needn’t be indexable) storing the elements
+        <ul>
+          <li>Need to iterate over each element in the list to lookup items, \(O(n)\) time complexity</li>
+          <li>Fairly small space complexity</li>
+        </ul>
+      </li>
+      <li>Can be implemented like a hash-table, but using only keys, not key-value pairs, in “hash-sets”
+        <ul>
+          <li>Fast \(O(1)\) lookups</li>
+          <li>Large space complexity</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h1 id="trees">Trees</h1>
+       
+        <h1 id="trees-adt">Trees (ADT)</h1>
+<ul>
+  <li>“A tree is an abstract model of a hierarchical structure” <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+  <li>Fundamental methods
+    <ul>
+      <li>size(), isEmpty(), root(), parent(n), children(n), numChildren(n)</li>
+    </ul>
+  </li>
+  <li>Traversals
+    <ul>
+      <li>Pre-order traversal
+        <ul>
+          <li>Each node is printed before its descendants, and descendants are taking in ascending order
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let n &lt;- the root node of the graph
+      
+Function preOrder(n)
+	Print n
+	For each child m of n
+		preOrder(n)
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Post-order traversal
+        <ul>
+          <li>Each node is printed after its descendants, and descendants are taking in ascending order
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let n &lt;- the root node of the graph
+      
+Function preOrder(n)
+	For each child m of n
+		preOrder(n)
+	Print n
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="binary-trees-adt">Binary trees (ADT)</h2>
+<ul>
+  <li>A specialised tree where each node has at most two children, called left and right
+    <ul>
+      <li>A binary search tree with \(n\) nodes, \(e\) external nodes, \(i\) internal nodes, and a height \(h\) has the properties
+        <ul>
+          <li>
+\[e = i + 1\]
+          </li>
+          <li>
+\[n = 2e - 1\]
+          </li>
+          <li>
+\[h \leq i\]
+          </li>
+          <li>
+\[h \leq \frac{(n-1)}{2}\]
+          </li>
+          <li>
+\[e \leq 2^h\]
+          </li>
+          <li>
+\[h \geq log_2 e\]
+          </li>
+          <li>
+\[h \geq log_2 (n+1) - 1\]
+          </li>
+        </ul>
+      </li>
+      <li>Binary trees support an additional type of traversal, in-order, as they have a discrete middle node
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let n &lt;- the root node of the graph
+    
+Function preOrder(n)
+	Print left child of n
+	Print n
+	Print right child of n
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Linked structure implementation <strong>(Concrete)</strong>
+    <ul>
+      <li>Each node is an object which stores its value, references to its child nodes (and sometimes a reference to its parent)</li>
+      <li>A diagram of such an implementation for a binary tree
+<img src="./images/binaryTreeLinkedStructure.png" alt="binaryTreeLinkedStructure" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+      <li>This is a linear space implementation, and has lookup time of \(O(log_2n)\) for binary trees, and logarithmic time for general trees</li>
+    </ul>
+  </li>
+  <li>Array based implementation of <em>binary</em> trees <strong>(Concrete)</strong>
+    <ul>
+      <li>Node values are stored in an array, and their children can be found at indices based on arithmetic operations of their own index
+        <ul>
+          <li>
+\[index(root) = 0\]
+          </li>
+          <li>If \(l\) is the left child of \(n\), then \(index(l) = 2 \cdot index(n) + 1\)</li>
+          <li>If \(r\) is the right child of \(n\), then \(index(r) = 2 \cdot index(n) + 2\)</li>
+        </ul>
+      </li>
+      <li>This can be very inefficient for unbalanced trees, for example, a tree which is just a “line” of nodes would grow with \(O(2^n)\) space, and has lookup time of \(O(log_2n)\)</li>
+    </ul>
+  </li>
+</ul>
+<h1 id="priority-queues">Priority queues</h1>
+       
+        <h1 id="priority-queues-adt">Priority queues (ADT)</h1>
+
+<ul>
+  <li>Similar to queues, items are sorted in order of a property “priority”, then FIFO across elements of the same “priority” (unlike maps, multiple elements can have the same priority)
+    <ul>
+      <li>Fundamental operations
+        <ul>
+          <li>enqueue(e, p), dequeue(), size(), isEmpty()</li>
+        </ul>
+      </li>
+      <li>The priorities, sometimes called keys, must form a total order relation, for example \(x \leq y\). We often use comparators on keys to form this total order relation</li>
+      <li>Comparators <strong>(ADT)</strong>
+        <ul>
+          <li>“Encapsulates the action of comparing two objects from a given total order” <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+          <li>The comparator is external to the keys being compared</li>
+        </ul>
+      </li>
+      <li>Various concrete implementations
+        <ul>
+          <li>Unsorted list based <strong>(Concrete)</strong>
+            <ul>
+              <li>To enqueue an item, we just add it to the end of the list, in \(O(1)\) time</li>
+              <li>to dequeue an item, we have to traverse the entire list to find the smallest item, taking \(O(n)\) time</li>
+            </ul>
+          </li>
+          <li>Sorted list <strong>(Concrete)</strong>
+            <ul>
+              <li>To enqueue an item, we have to traverse the list to find where to put it, taking \(O(n)\) time (but we normally wouldn’t need to traverse the entire list, unlike dequeuing in the unsorted implementation, which also must)</li>
+              <li>To dequeue an item, we just take it from the front of the list, in \(O(1)\) time</li>
+            </ul>
+          </li>
+          <li>For both, a positional/linked list should be used (for unsorted, doubly linked is needed)  since we want to be able to grow the list, but don’t need to be able to index it</li>
+          <li>Heap based <strong>(Concrete)</strong></li>
+        </ul>
+      </li>
+      <li>Sorting with list based priority queues
+        <ul>
+          <li>We can sort a set of items by enqueueing them one by one, using the priority as the total ordering to sort by, and then dequeuing them into a list will result in them being sorted</li>
+          <li>When the unsorted concrete implementation is used, this encodes “selection sort”
+            <ul>
+              <li>The steps taken in the sort are:
+                <ol>
+                  <li>Enqueue all \(n\) elements, each taking \(O(1)\) time into the priority queue, taking \(O(n)\) time</li>
+                  <li>Dequeue all the elements into sorted order, with the total calls taking \(O(n) + O(n-1) + ... + O(1)\), which is \(O(n^2)\) time
+Hence, the total time complexity is \(O(n^2)\)</li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+          <li>When the unsorted concrete implementation is used, this encodes “insertion sort”
+            <ul>
+              <li>The steps taken in the sort are:
+                <ol>
+                  <li>Enqueue \(n\) elements, with the total calls taking \(O(1) + O(2) + ... + O(n)\), which is \(O(n^2)\) time</li>
+                  <li>Dequeue all \(n\) items, each taking \(O(1)\), taking \(O(n)\) time
+Hence, the total time complexity is \(O(n^2)\)</li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+<h1 id="heaps">Heaps</h1>
+       
+        <h1 id="heaps-adt">Heaps (ADT)</h1>
+<ul>
+  <li>A heap is a binary tree storing keys at its nodes and satisfying the following properties:
+    <ul>
+      <li>Heap-order, for every internal node other than the root (as it has no parent), the value of the node is greater than the value of the parent node</li>
+      <li>Complete binary tree, the height of the tree is minimal for the number of the nodes it contains, and is filled from “left to right”. This is formally defined as:
+        <blockquote>
+          <p>Let \(h\) be the height of the heap</p>
+
+          <p>​	Every layer of height \(i\) other than the lowest layer (\(i = h-1\)) has \(2^i\) nodes</p>
+
+          <p>​	In the lowest layer, the all internal nodes are to the left of external nodes</p>
+        </blockquote>
+      </li>
+      <li>The last node of the heap is the rightmost node of maximum depth
+<img src="./images/heapDiagram.png" alt="heapDiagram" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+    </ul>
+  </li>
+  <li>Heaps can be used to implement priority queues</li>
+  <li>Inserting into a heap
+    <ul>
+      <li>First, insert the element to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, running in \(O(1)\) time, if a pointer to the position to insert is maintained
+<img src="./images/heapInsertOne.png" alt="heapInsertOne" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+      <li>Run the “upheap” algorithm to re-order the heap so that it fulfils the heap properties
+        <ul>
+          <li>Repeatedly swap the inserted node with its parent, until either it reaches the root node, or it is larger than the parent node
+<img src="./images/heapInsertTwo.png" alt="heapInsertTwo" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+          <li>Since the heap has a height of \(O(log_2 n)\), performing a swap takes \(O(1)\) time, and the maximum number of swaps is the height of the heap, the upheap algorithm takes \(O(log_2 n)\), time</li>
+        </ul>
+      </li>
+      <li>In total, insertion takes \(O(log_2 n)\), time</li>
+    </ul>
+  </li>
+  <li>Removal from a heap
+    <ul>
+      <li>The smallest item in the heap is the root node, so this value is stored and returned. However, we need to maintain heap properties as it is overwritten</li>
+      <li>First, overwrite the value of the root node with the value of the last node, and remove the last node from the tree
+<img src="./images/heapRemoveOne.png" alt="heapRemoveOne" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+      <li>Run the “downheap” algorithm to re-order the heap so that it fulfils the heap properties
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let p &lt;- the root node
+Let c &lt;- the child of p with the minimal key (right if existent, otherwise left)
+If the value of p is less than or equal to the value of c
+	Stop, since the heap order property is fulfilled
+Else
+	Swap the values of p and c
+	Run the downheap algorithm again with the root node (p) now as the child node (c)
+</code></pre></div>        </div>
+        <p><img src="./images/heapRemoveTwo.png" alt="heapRemoveTwo" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</p>
+      </li>
+      <li>As with upheap, since the heap has a height of \(O(log_2 n)\), performing a swap takes \(O(1)\) time, and the maximum number of swaps is the height of the heap, the downheap algorithm takes \(O(log_2 n)\), time</li>
+    </ul>
+  </li>
+  <li>Since the heap can be used to implement priority queues, it can be used for sorting as with list based implementations, which resulted in selection and insertion sort. This is called a heap sort
+    <ul>
+      <li>The steps taken in the sort are:
+        <ol>
+          <li>Enqueue \(n\) elements, with each enqueueing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time</li>
+          <li>Dequeue all \(n\) items, with each Dequeuing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time
+Hence, the total time complexity is \(O(n \cdot log n)\)</li>
+        </ol>
+      </li>
+      <li>This is one of the fastest classes of sorting algorithm, much more efficient than insertion or selection</li>
+    </ul>
+  </li>
+  <li>Concrete implementations
+    <ul>
+      <li>Any tree implementation can be used for a heap, as it merely modifies the way getters and setters work, not the internal data structures</li>
+      <li>The main draw-back of array based implementations of space inefficiency for unbalanced trees is a non-issue for heaps, as they are implicitly balanced, so they are often used</li>
+    </ul>
+  </li>
+</ul>
+<br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="skip-lists">Skip lists</h1>
+       
+        <h1 id="goals-for-skip-lists">Goals for skip lists</h1>
+
+<ul>
+  <li>The goal of skip lists is to efficiently implement searching, insertion and deletion</li>
+  <li>For fast searching, we need the list to be sorted
+    <ul>
+      <li>We have come across two concrete implementations of lists, but neither of which fulfil all these goals
+        <ul>
+          <li>Sorted arrays
+            <ul>
+              <li>Easy to search using binary search, since they are not indexable, needs $O(log\ n)$ time</li>
+              <li>Difficult insert/delete from, as elements need to be “shuffled up” to maintain ordering, needs $O(n)$ time</li>
+            </ul>
+          </li>
+          <li>Sorted lists
+            <ul>
+              <li>Easy to insert/delete from, assuming the position is known, needs $O(1)$ time</li>
+              <li>Difficult to search, since they are not indexable, needs $O(n)$ time</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="skip-lists-as-an-adt">Skip lists as an ADT</h1>
+
+<ul>
+  <li>
+    <p>Skip lists are composed from a number of sub-lists, which act as layers within them, which we denote by the set \(S = \{S_0, S_1, ..., S_h\}\) where \(h\) denotes the number of layers in the list, i.e. its “height”</p>
+  </li>
+  <li>
+    <p>All lists have a guard values \(+ \infty\) and \(- \infty\) at either end, and all the elements are in order between those values</p>
+  </li>
+  <li>
+    <p>The “bottom” list, \(S_0\) contains all the values in order between the guards</p>
+  </li>
+  <li>
+    <p>The “top” list, \(S_h\), contains only the guard values, \(+ \infty\) and \(- \infty\)</p>
+  </li>
+  <li>
+    <p>Each list \(S_i\) for \(0 &lt; i &lt; h\) (i.e. everything bar the top list, which contains only the guards, and the bottom list, which contains all elements) contains a random subset of the elements in the list below it, \(S_1\)</p>
+  </li>
+  <li>
+    <p>The probability of an element in \(S_i\) being in the list above it, \(S_{i+1}\), is \(0.5\)</p>
+  </li>
+  <li>
+    <p>A diagram of the structure of a skip list is shown below</p>
+
+    <p><img src="./images/skipLists.png" alt="skipLists" /></p>
+
+    <p>(<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</p>
+  </li>
+</ul>
+
+<h1 id="searching">Searching</h1>
+
+<ul>
+  <li>
+    <p>To search for an value \(v\) in a skip list, we follow the algorithm</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Start at the first position in the top list (the top minus infinity guard)
+  
+Repeat
+	//Scan forward step
+	Repeat
+		If the value of the right adjacent position is greater than that of the current position
+			Break out of the loop
+		Else if the value of the right adjacent position is equal to the current position
+			Stop, since the element has been found
+		Move to the right adjacent position
+  		
+	//Drop down step
+	If there is a below adjacent position (you're not in the bottom list)
+		Move to the below adjacent position
+	Else (you're in the bottom list)
+		Stop, since the element is not in the list
+</code></pre></div>    </div>
+
+    <p><img src="./images/skipListsSearch.png" alt="skipListsSearch" /></p>
+
+    <p>(<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</p>
+  </li>
+</ul>
+
+<h1 id="inserting">Inserting</h1>
+
+<ul>
+  <li>
+    <p>To insert a value \(v\) into a skip list, we follow the algorithm</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let i &lt;- the number of flips of a fair coin before a head comes up
+If i &gt;= h
+	Add the new skip lists {S(h+1), ..., S(i+1)} to S, all by default only containing the guards
+Find the positions p(1), ..., p(i) in all the the lists of the largest element less than v, using the search algorithm
+For each j from 0 to i
+	Insert k into S(j) immediately after the position p(j)
+</code></pre></div>    </div>
+
+    <p><img src="./images/skipListsInsertion.png" alt="skipListsInsertion" /></p>
+
+    <p>(<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</p>
+  </li>
+</ul>
+
+<h1 id="deleting">Deleting</h1>
+
+<ul>
+  <li>
+    <p>To delete a value \(v\) from a skip list, we follow the algorithm</p>
+
+    <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Find the positions p(1), ..., p(i) in all the the lists of the largest element less than v, using the search algorithm
+Remove the postions  p(1), ..., p(i) from the lists S(0), ..., S(i)
+Remove any duplicate list layers containing only guards from the top of the skip list
+</code></pre></div>    </div>
+
+    <p><img src="./images/skipListsDeletion.png" alt="skipListsDeletion" /></p>
+
+    <p>(<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</p>
+  </li>
+</ul>
+
+<h1 id="implementation">Implementation</h1>
+
+<ul>
+  <li>
+    <p>We can use “quad-nodes”, which are similar to those used in linked lists, but with four pointers, instead of just one</p>
+
+    <p><img src="./images/skipListsQuadNode.png" alt="skipListsQuadNode" /></p>
+
+    <p>(<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</p>
+  </li>
+  <li>
+    <p>This stores the entry, and links to the previous, next, below and above nodes</p>
+  </li>
+  <li>
+    <p>Additionally, there are special guard nodes, with the values \(+ \infty\) and \(- \infty\)</p>
+  </li>
+</ul>
+
+<h1 id="performance">Performance</h1>
+
+<ul>
+  <li>
+    <p>Space usage</p>
+
+    <ul>
+      <li>
+        <p>Dependent on randomly generated numbers for how many elements are in high layers, and how high the layers are</p>
+      </li>
+      <li>
+        <p>We can find the expected number of node for a skip list of \(n\) elements:</p>
+
+        <blockquote>
+          <p>The probability of having \(i\) layers in the skip list is \(\frac{1}{2^i}\)</p>
+
+          <p>The probability of having \(i\) layers in the skip list is \(\frac{1}{2^i}\)</p>
+
+          <p>If the probability of any one of \(n\) entries being in a set is \(p\), the expected size of the set is \(n \cdot p\)</p>
+
+          <p>Hence, the expected size of a list \(S_i\) is \(\frac{n}{2^i}\)</p>
+
+          <p>This gives the expected number of elements in the list as \(\sum_{i=0}^{h}(\frac{n}{2^i})\)</p>
+
+          <p>We can express this is \(n \cdot \sum_{i=0}^{h}(\frac{1}{2^i})\), and with the sum converging to a constant factor, so the space complexity is \(O(n)\)</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>The height of a skip list of \(n\) items is <strong>likely</strong> to (since it is generated randomly) have a height of order \(O(log\ n)\)</p>
+
+    <ul>
+      <li>
+        <p>We show this by taking a height logarithmically related to the number of elements, and showing that the probability of the skip list having a height greater than that is very small</p>
+
+        <blockquote>
+          <p>The probability that a layer \(S_i\) has at least one item is at most \(\frac{n}{2^i}\)</p>
+
+          <p>Considering a layer logarithmically related to the number of elements \(i = 3 \cdot log\ n\)</p>
+
+          <p>The probability of the layer \(S_i\) has at least one entry is at most \(\frac{n}{2^{3 \cdot log\ n}} = \frac{n}{n^3} = \frac{1}{n^2}\)</p>
+
+          <p>Hence, the probability of a skip list of \(n\) items having a height of more than \(3 \cdot log\ n\) is at most \(\frac{1}{n^2}\), which tends to a negligibly small number very quickly</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Search time</p>
+
+    <ul>
+      <li>
+        <p>Dependent on the number of steps (both scan forward and drop down) that need to be taken to find or verify the absence of the item</p>
+
+        <ul>
+          <li>
+            <p>In the worst case, the both dimensions have to be totally traversed, if the item is both bigger than all other items, and not present</p>
+          </li>
+          <li>
+            <p>The number of drop down steps is bounded by the height (\(\approx O(log\ n)\) with high probability)</p>
+          </li>
+          <li>
+            <p>The expected number of scan forward steps in each list is \(2\), so the expected number of scan forward steps in total is \(O(log\ n)\)</p>
+
+            <p><strong>If you can word a better explanation of this, please pull request</strong></p>
+          </li>
+          <li>
+            <p>Hence, the total search time is \(O(log\ n)\)</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Update time</p>
+    <ul>
+      <li>Since the insert and delete operations are both essentially wrappers around the search operation, and all of their additional functionality is of \(O(log\ n)\) or better, the time complexity is the same as the search function</li>
+    </ul>
+  </li>
+</ul>
+<br/>
+            <hr style="
+                padding: 5px;
+                border-radius: 1em;
+                background-color: whitesmoke;
+            ">
+            <br/><h1 id="graph-related-pseudocode">Graph Related Pseudocode</h1>
+       
+        <h1 id="depth-first-search-dfs">Depth First Search (DFS)</h1>
+<h2 id="dfs-for-a-particular-node-">DFS for a particular node: <br /></h2>
+
+<p>The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures</p>
+
+<p><strong>Algorithm</strong> $DFS(G, v)$ <br />
+     <strong>Input</strong>  graph $G$ and start at vertex $v$ of $G$<br />
+     <strong>Output</strong> labeling of the edges of $G$ in the connected component of v as discovery edges and back edges 
+<br />
+<br />
+     
+$setLabel(v, VISITED)$ <br />
+     
+<strong>for all</strong> $e \in G.incidentEdges(v)$ <br />
+         
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+            
+$w \leftarrow opposite(v,e)$ <br />
+            
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                
+$setLabel(e, DISCOVERY)$ <br />
+                
+$DFS(G, w)$ <br />
+            
+<strong>else</strong> <br />
+                
+$setLabel(e,BACK)$ <br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<p><br />
+<br /><br /></p>
+
+<h2 id="dfs-for-an-entire-graph">DFS for an entire graph:</h2>
+<p>The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures, which is used to perform depth first search on the entire graph.</p>
+
+<p><strong>Algorithm</strong> $DFS(G)$ <br />
+     <strong>Input</strong>  graph $G$ <br />
+     <strong>Output</strong> labelling of the edges of $G$ as discovery and back edges
+<br />
+<br />
+     <strong>for all</strong> $u \in G.vertices()$ <br />
+         <strong>$setLabel(u, UNEXPLORED)$</strong> <br /></p>
+
+<p>     <strong>for all</strong> $e \in G.edges()$ <br />
+         <strong>$setLabel(e, UNEXPLORED)$</strong> <br /></p>
+
+<p>     <strong>for all</strong> $u \in G.vertices()$ <br />
+         <strong>if $getLabel(u, UNEXPLORED)$</strong> <br />
+             $DFS(G, v)$ <br /></p>
+
+<p><strong>END ALGORITHM</strong>
+<br /></p>
+
+<p><strong>Algorithm</strong> $DFS(G, v)$ <br />
+     <strong>Input</strong>  graph $G$ and start at vertex $v$ of $G$<br />
+     <strong>Output</strong> labeling of the edges of $G$ in the connected component of v as discovery edges and back edges 
+<br />
+<br />
+     
+$setLabel(v, VISITED)$ <br />
+     
+<strong>for all</strong> $e \in G.incidentEdges(v)$ <br />
+         
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+            
+$w \leftarrow opposite(v,e)$ <br />
+            
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                
+$setLabel(e, DISCOVERY)$ <br />
+                
+$DFS(G, w)$ <br />
+            
+<strong>else</strong> <br />
+                
+$setLabel(e,BACK)$ <br /></p>
+
+<p><strong>END ALGORITHM</strong>
+<br /><br /><br /></p>
+
+<h2 id="path-finding-with-dfs">Path Finding with DFS</h2>
+<p>By using an alteration of the depth first search algorithm, we can use it to find a path between two given vertices, using the <strong>template method pattern</strong></p>
+
+<p><strong>Algorithm</strong>
+$pathDFS(G,v,z)$ <br />
+    
+$setLabel(v, VISITED)$ <br />
+    
+$S.push(v)$<br />
+    
+<strong>if</strong> $v=z$<br />
+        
+<strong>return</strong> $S.elements()$ <br />
+    
+<strong>for all</strong> $e \in G.incidentEdges(v)$<br />
+        
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+            
+$w \leftarrow opposite(v,e)$ <br />
+            
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                
+$setLabel(e,DISCORVERY)$ <br />
+                
+$S.push(e)$<br />
+                
+$pathDFS(G,w,z)$<br />
+                
+$S.pop(e)$<br />
+            
+<strong>else</strong><br />
+                
+$setLabel(e, BACK)$<br />
+        
+$S.pop(v)$<br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<p><br /><br /><br /></p>
+
+<h2 id="cycle-finding-with-dfs">Cycle Finding with DFS</h2>
+
+<p><strong>Algorithm</strong> $cycleDFS(G,v)$<br />
+    
+$setLabel(v,VISITED)$ <br />
+    
+$S.push(v)$ <br />
+    
+<strong>for all</strong> $e \in G.incidentEdges(v)$<br />
+        
+<strong>if</strong> $getLabel(e) = UNEXPLORED$<br />
+            
+$w \leftarrow opposite(v,e)$<br />
+            
+$S.push(e)$ <br />
+            
+<strong>if</strong> $getLabel(w)= UNEXPLORED$ <br />
+                
+<strong>if</strong> $setLabel(e,DISCOVERY)$ <br />
+                
+$cycleDFS(G,w)$ <br />
+                
+$S.pop(e)$<br />
+            
+<strong>else</strong> <br />
+                
+<strong>T</strong> $\leftarrow$ new empty stack <br />
+                
+<strong>repeat</strong><br />
+                    
+$o \leftarrow S.pop()$ <br />
+                    
+$T.push(o)$ <br />
+                
+<strong>until</strong> $o=w$<br />
+                
+<strong>return</strong> $T.elements()$ <br />
+    
+$S.pop(v)$<br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<p><br /><br /><br /></p>
+
+<h1 id="breadth-first-search-bfs-pseudocode">Breadth First Search (BFS) Pseudocode</h1>
+<p>This algorithm is a graph traversal algorithm which follows the general directive: <br /></p>
+
+<ol>
+  <li>First visit all vertices that are a distance of 1 from then starting node.</li>
+  <li>Second, visit all vertices of distance 2, up until all vertices have been visited.</li>
+</ol>
+
+<p>The result of this, is that each time an edge is reached, it is one (possibly of many) of the shortest paths to that particular node.</p>
+
+<p><strong>Algorithm</strong> $BFS(G)$ <br />
+     
+<strong>Input</strong> graph $G$ <br />
+    
+<strong>Output</strong> labeling of the edges and partition of the vertices of G<br />
+    
+<strong>for all</strong> $e \in G.vertices()$ <br />
+        
+$setLabel(u, UNEXPLORED)$ <br />
+    
+<strong>for all</strong> $e \in G.edges()$ <br />
+        
+$setLabel(e, UNEXPLORED)$ <br />
+    
+<strong>for all</strong> $v \in G.vertices()$<br />
+        
+<strong>if</strong> $getLabel(v) = UNEXPLORED$ <br />
+            
+$BFS(G,v)$
+<br /></p>
+
+<p><strong>END ALGORITHM</strong>
+<br /><br /><br />
+<strong>Algorithm</strong> $BFS(G, s)$ <br />
+    
+$L_0 \leftarrow$ new empty sequence <br />
+    
+$L_0 .addLast(s)$  <br />
+    
+$setLabel(s, VISITED)$ <br />
+    
+$i \leftarrow 0$ <br />
+    
+<strong>while</strong> $¬L_i .isEmpty()$ <br />
+        
+$L_i+1 \leftarrow$ new empty sequence <br />
+        
+<strong>for all</strong> $v\in L_i .elements()$ <br />
+            
+<strong>for all</strong> $e \in G.incidentEdges(v)$ <br />
+                
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+                    
+$w \leftarrow opposite(v,e)$ <br />
+                    
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                        
+$setLabel(e) = (e, DISCOVERY)$ <br />
+                        
+$setLabel(w,VISITED)$ <br />
+                        
+$L_i+1 .addLast(w)$ <br />
+                    
+<strong>else</strong> <br />
+                        
+$setLabel(e,CROSS)$ <br />
+        
+$i \leftarrow i + 1$
+<br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<h2 id="directed-graphs">Directed graphs</h2>
+
+<ul>
+  <li>This algorithm is the Floyd Warshall algorithm, which is used to compute the transitive closure on a directed graph.</li>
+</ul>
+
+<p><strong>Algorithm</strong> $FloydWarshall(G)$ <br />
+    
+<strong>Input</strong> digraph $G$ <br />
+    
+<strong>Output</strong> transitive closure $G^*$ of $G$ <br /><br />
+    
+$i \leftarrow 1$ <br />
+    
+<strong>for all</strong> $v \in G.vertices()$ <br />
+        
+denote $v$ as $v_i$ <br />
+        
+$i \leftarrow i + 1$ <br />
+    
+$G_0 \leftarrow G$ <br />
+    
+<strong>for</strong> $k \leftarrow 1$ <strong>to</strong> $n$ <strong>do</strong><br />
+        
+$G_k \leftarrow G_{k-1}$ <br />
+            
+<strong>for</strong> $i\leftarrow 1$ <strong>to</strong> $n(i\neq k)$ <strong>do</strong> <br />
+                
+<strong>for</strong> $j \leftarrow 1$ <strong>to</strong> $n(j\neq i, k)$ <strong>do</strong> <br />
+                    
+<strong>if</strong> $G_{k-1}.areAdjacent(v_i,v_k)$  $\&amp;$ $G_{k-1}.areAdjacent(v_k,v_j)$ <br />
+                        
+<strong>if</strong> $¬G_{k-1}.areAdjacent(v_i,v_j)$ <br />
+                            
+$G_k.insertDirectedEdge(v_i,v_j,k)$<br />
+        
+<strong>return</strong> $G_n$
+<br /><br /><br /></p>
+
+<h3 id="topological-ordering-using-dfs">Topological ordering using DFS</h3>
+
+<p><strong>Algorithm</strong> $topologicalDFS(G)$ <br />
+    
+<strong>Input</strong> dag $G$<br />
+    
+<strong>Output</strong> topotlogical ordering of G <br /><br />
+    
+$n \leftarrow G.numVertices()$ <br />
+    
+<strong>for all</strong> $u\in G.vertices()$ <br />
+        
+$setLabel(,UNEXPLORED)$ <br />
+    
+<strong>for all</strong> $v\in G.vertices()$ <br />
+        
+<strong>if</strong> $getLabel(v) = UNEXPLORED$ <br />
+            
+$topologicalDFS(G,v)$
+<br /><br /><br />
+<strong>Algorithm</strong> $topologicalDFS(G,v)$ <br />
+    
+<strong>Input</strong> graph $G$ and start a vertex $v$ of $G$ <br />
+    
+<strong>Output</strong> labeling of the vertices of G in the connected component of $v$ <br /><br />
+    
+$setLabel(v, VISITED)$ <br />
+    
+<strong>for all</strong> $e\in G.outEdges(v)$  <br />
+        
+$w\in opposite(v,e)$ // Outgoing edges <br />
+        
+<strong>if</strong> $getLabel(w) = UNEXPLORED$  <br />
+            
+$topologicalDFS(G,w)$ // $e$ is a discovery edge<br />
+        
+<strong>else</strong> <br />
+            
+Label $v$ with topological number $n$ // $e$ is a forward or cross edge<br />
+        
+$n\leftarrow n - 1$ <br /></p>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

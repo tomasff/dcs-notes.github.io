@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Analysis of algorithms | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Analysis of algorithms" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick" />
+<meta property="og:description" content="A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part2.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part2.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Analysis of algorithms" />
+<script type="application/ld+json">
+{"description":"A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick","headline":"Analysis of algorithms","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part2.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part2.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Analysis of algorithms</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#running-time">Running time</a></li><li><a href="#random-access-machine-ram-model">Random Access Machine (RAM) model</a></li><li><a href="#common-functions-of-running-time">Common functions of running time</a></li><li><a href="#big-o-notation">Big-O notation</a></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part12.html" title="Recursive algorithms">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part3.html" title="General algorithms">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<p><br /></p>
+
+<h1 id="running-time">Running time</h1>
+
+<ul>
+  <li>To assess how good an algorithm is, we often use the metric of running time compared with the size of the input to the algorithm</li>
+  <li>There are three types of running times which can be assessed:
+    <ul>
+      <li>Worst case - which we focus on here, since it is both easy to analyse and useful</li>
+      <li>Average case - which is often more difficult to assess</li>
+      <li>Best case - often not sufficiently representative of the algorithm</li>
+    </ul>
+  </li>
+  <li>We can try to assess the running times in two ways:
+    <ul>
+      <li>Experimental trials
+        <ul>
+          <li>Writing a program implementing the algorithm, then running for inputs of different sizes. We can then fit curves to a plot of the results to try to classify the algorithm</li>
+          <li>This has various drawbacks, including:
+            <ul>
+              <li>Need to implement the algorithm, which might be difficult, or the reason for the analysis is to decide which one to implement</li>
+              <li>Not all inputs can be covered, so not necessarily representative</li>
+              <li>Dependent on machine hardware and software environments, so difficult to equate between different tests, since same specs are needed</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li>Theoretical analysis
+        <ul>
+          <li>Given a high-level description of the algorithm (not a full implementation), expresses the running time as a function of the input size \(n\)
+            <ul>
+              <li>Pseudocode is used for this high-level description, which lies between English prose and program code. It has no formal syntax, and allows omission of some aspects of the implementation to make analysis easier</li>
+            </ul>
+          </li>
+          <li>This has the benefits of:
+            <ul>
+              <li>Allowing all possible inputs to be covered</li>
+              <li>Being independent of machine hardware and software environments, so easier to equate between different tests</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="random-access-machine-ram-model">Random Access Machine (RAM) model</h1>
+
+<ul>
+  <li>To analyse programs, we use a simplified model of how computers work to help think about the time an high level operation takes to run by expressing it as fundamental operations which are equivocal to real computers</li>
+  <li>In the RAM model, we consider a computer with:
+    <ul>
+      <li>A single CPU executing a single program</li>
+      <li>An arbitrarily large indexable array of memory</li>
+      <li>A set of registers memory can be copied into</li>
+      <li>Basic arithmetic and memory allocation operations</li>
+    </ul>
+  </li>
+  <li>Generally, we tend to abstract beyond this model to just consider a set of “primitive operations” which take constant time irrespective of input size in the RAM model
+    <ul>
+      <li>Generally single lines of pseudocode, but not always</li>
+    </ul>
+  </li>
+  <li>We can then analyse performance by counting the number of operations needed, as their number is proportional to running time</li>
+  <li>We can then express the running time of the program as being between the best and worst cases of number of operations needed, multiplied their running time
+    <ul>
+      <li>Let \(T(n)\) denote the running time, $b(n)$ the best case number of operations, \(w(n)\) the worst case, and \(t\) the time taken for one primitive operation</li>
+      <li>Then, the running time is bounded as \(t \cdot b(n) \leq T(n) \leq t \cdot w(n)\)</li>
+      <li>This metric of running time \(T(n)\) is <strong>not</strong> dependent on machine hardware or software environment, instead is an intrinsic property of the algorithm</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="common-functions-of-running-time">Common functions of running time</h1>
+
+<ul>
+  <li>Good
+    <ul>
+      <li>Constant, \(1\)</li>
+      <li>Logarithmic, \(log\ n\)</li>
+      <li>Linear, \(n\)</li>
+      <li>N-log-N, \(n \cdot log\ n\)</li>
+    </ul>
+  </li>
+  <li>Bad
+    <ul>
+      <li>Quadratic, \(n^2\)</li>
+      <li>Cubic, \(n^3\)</li>
+      <li>Polynomial, \(\sum_i (a_i \cdot x^i)\)</li>
+      <li>Exponential, \(a^n, \exists a&gt;1\)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="big-o-notation">Big-O notation</h1>
+
+<ul>
+  <li>
+    <p>Formal definition</p>
+
+    <blockquote>
+      <p>Given functions \(f(n)\) and \(g(n)\), we say that \(f(n)\) is \(O(g(n))\) if:</p>
+
+      <p>There exist positive constants \(c\) and \(n_0\) such that \(f(n) \leq c \cdot g(n)\) for \(n \geq n_0\)</p>
+    </blockquote>
+  </li>
+  <li>
+    <p>Informally, this means that means that \(f(n)\) will be “overtaken” by $g(n)$ for all values above some threshold \(n_0\), allowing scaling by a linear factor \(c\)</p>
+
+    <ul>
+      <li>”\(f(n)\) is  \(O(g(n))\) if \(g(n)\) grows as fast or faster than \(f(n)\) in the limit of \(n \rightarrow \infty\)” <a href="https://math.stackexchange.com/a/620150">source</a></li>
+    </ul>
+  </li>
+  <li>
+    <p>Examples (<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</p>
+
+    <ul>
+      <li>
+        <blockquote>
+          <p>Consider the function \(2n+10\), to show that it is \(O(n)\), we take:</p>
+
+          <p>​	$2n+10 \leq c \cdot n$</p>
+
+          <p>​	\((c-2) \cdot n \geq 10\)</p>
+
+          <p>​	\(n \geq 10/(c-2)\)</p>
+
+          <p>Hence, picking \(c=3\) and \(n_0 = 10\), so the condition is satisfied</p>
+        </blockquote>
+
+        <p><img src="./images/bigOh.png" alt="bigOh" /></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>To prove something is not \(O(n)\), we show that there is no \(c\) for any arbitrarily large \(n_0\) which satisfies the condition</p>
+  </li>
+  <li>
+    <p>Big-O notation gives an upper bound on the growth rate of a function as its input size \(n\) tends to infinity</p>
+
+    <ul>
+      <li>Hence, \(f(n)\) is \(O(g(n))\) means that the growth rate of \(f(n)\) is no greater than that of the growth rate of \(g(n)\)</li>
+    </ul>
+  </li>
+  <li>
+    <p>Informally, the Big-O of a function is the term within a function which grows fastest</p>
+
+    <ul>
+      <li>This is because that term will come to “dominate” for very large \(n\), and we then just pick \(n_0\) where that term is dominating, and use \(c\) to shift the function to fit</li>
+    </ul>
+  </li>
+  <li>
+    <p>This gives rise to some rules to quickly evaluate the Big-O without going through the mathematical procedure</p>
+
+    <ul>
+      <li>If \(f(n)\) is a polynomial of degree \(d\), then \(f(n)\) is \(O(n^d)\)
+        <ul>
+          <li>This comes from dropping all but the fastest growing term, as it comes to dominate for large \(n\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>When writing Big-O, we:</p>
+
+    <ul>
+      <li>Try to use the smallest possible class of functions which fulfills the criteria, e.g. \(O(n)\) not \(O(n^2)\), whilst both technically are Big-O of linear functions</li>
+      <li>Use the simplest expression of the class, e.g. \(O(n)\), not \(O(5n)\)</li>
+    </ul>
+  </li>
+  <li>Asymptotic algorithm analysis is a way we can take pseudocode and use it to find the Big-O of an algorithm
+    <ul>
+      <li>We first consider the worst-case number of primitive operations that the algorithm could require to run as a function of its input size</li>
+      <li>We then express this derived function in Big-O notation</li>
+    </ul>
+  </li>
+  <li>There are other “relatives” of Big-O notation
+    <ul>
+      <li>Big-O gives the upper bound
+        <ul>
+          <li>\(f(n) \leq g(n)\) in the limit of \(n \rightarrow \infty\)</li>
+        </ul>
+      </li>
+      <li>Big-Omega gives the lower bound
+        <ul>
+          <li>\(f(n) \geq g(n)\) in the limit of \(n \rightarrow \infty\)</li>
+        </ul>
+      </li>
+      <li>Big-Theta gives “asymptotically tight” \(\approx\) average
+        <ul>
+          <li>\(f(n) = g(n)\) in the limit of \(n \rightarrow \infty\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><a href="https://courses.cs.washington.edu/courses/cse326/06au/lectures/lect03.pdf">Additional notes</a></p>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Recursive algorithms | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Recursive algorithms" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick" />
+<meta property="og:description" content="A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part3.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part3.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Recursive algorithms" />
+<script type="application/ld+json">
+{"description":"A collection of revision notes summarising modules taught on the Computer Science course at the University of Warwick","headline":"Recursive algorithms","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part3.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part3.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Recursive algorithms</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#definition-structure-and-examples">Definition, structure, and examples</a></li><li><a href="#types-of-recursion">Types of recursion</a></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part2.html" title="Stacks and Queues">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part4.html" title="Analysis of algorithms">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<p><br /></p>
+
+<h1 id="definition-structure-and-examples">Definition, structure, and examples</h1>
+
+<ul>
+  <li>Recursion can be defined in various ways:
+    <ul>
+      <li>“When a method calls itself” (<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</li>
+      <li>“A method which is expressed in terms of calls to simpler cases of itself, and a base case” (<em>crsg-guide</em>, Edmund Goodman)
+        <ul>
+          <li>It’s a recursive reference, get it? :upside_down_face:</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Recursive functions contain two main components
+    <ul>
+      <li>Base cases
+        <ul>
+          <li>Simple input values where the return value is a known constant, so no recursive calls are made</li>
+          <li>These are required for a recursive function to finish evaluating, so there must be at least one</li>
+        </ul>
+      </li>
+      <li>Recursive calls
+        <ul>
+          <li>Calls to the same recursive function, with a simpler input (since it must “move towards” the base case for it to ever finish evaluating)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>We can express binary search as a recursive function, with:
+    <ul>
+      <li>The input being a list,</li>
+      <li>The recursive call being the half of the list the search has been narrowed down to</li>
+      <li>The base cases being a single item, returning the index of that item if it is the item being searched for, or an indicator of absence if not</li>
+    </ul>
+  </li>
+  <li>We can visualise recursion by drawing diagrams of functions, with functions as boxes and arrows indicating calls and return values</li>
+</ul>
+
+<h1 id="types-of-recursion">Types of recursion</h1>
+
+<ul>
+  <li>Linear recursion
+    <ul>
+      <li>Each functional call makes only one recursive call (there may be multiple different possible calls, but only one is selected), or none if it is a base case</li>
+    </ul>
+  </li>
+  <li>Binary/multiple recursion
+    <ul>
+      <li>Each functional call makes two/multiple recursive calls, unless it is a base case</li>
+    </ul>
+  </li>
+</ul>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

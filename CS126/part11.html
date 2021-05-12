@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Graphs | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Graphs" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Graphs" />
+<meta property="og:description" content="Graphs" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part11.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part11.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Graphs" />
+<script type="application/ld+json">
+{"description":"Graphs","headline":"Graphs","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part11.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part11.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Graphs</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#graphs">Graphs</a><ul><li><a href="#graphs-as-a-mathematical-concept">Graphs as a mathematical concept</a></li><li><a href="#graphs-as-an-adt">Graphs as an ADT</a></li></ul></li><li><a href="#depth-first-search">Depth-first search</a><ul><li><a href="#dfs-for-an-entire-graph">DFS for an entire graph:</a></li><li><a href="#path-finding-with-dfs">Path Finding with DFS</a></li><li><a href="#cycle-finding-with-dfs">Cycle Finding with DFS</a></li></ul></li></ul></li><li><a href="#breadth-first-search">Breadth-first search</a></li><li><a href="#directed-graphs">Directed graphs</a><ul><li><a href="#topological-ordering-using-dfs">Topological ordering using DFS</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part10.html" title="General algorithms">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part12.html" title="Binary search and self-balancing trees">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<h1 id="graphs">Graphs</h1>
+
+<h2 id="graphs-as-a-mathematical-concept">Graphs as a mathematical concept</h2>
+
+<ul>
+  <li>Defined the same as in CS130</li>
+  <li>A pair \(G = (V, E)\) were \(V\) is a set of vertices, and \(E\) is an unordered collection of pairs of vertices, called edges, for example: \(G = (\{a, b, c\}, [(a,b), (b,c), (c,a)])\)</li>
+  <li>Directed and undirected graphs
+    <ul>
+      <li>In undirected graphs, the edge pair indicates that both vertices are connected to each other</li>
+      <li>In directed graphs, the edge pair indicates that the first vertex is connected to the second, but not vice versa</li>
+    </ul>
+  </li>
+  <li>Terminology
+    <ul>
+      <li>Adjacent vertices - vertices with an edge between them</li>
+      <li>Edges incident on a vertex - edges which both connect to the same vertex</li>
+      <li>End vertices/endpoints - the two vertices in the pair that an edge connects to</li>
+      <li>Degree of a vertex - the number of edges that connect to a pair</li>
+      <li>Parallel edges - two edges both connecting the same nodes (reason why edges are an unordered collection, not a set)</li>
+      <li>Self-loop - an edge whose vertices are both the same</li>
+      <li>Path - a sequence of alternating vertices and edges, starting and ending in a vertex</li>
+      <li>Simple paths - paths containing no repeating vertices (hence are acyclic)</li>
+      <li>Cycle - a path starting and ending at the same vertex</li>
+      <li>Acyclic - a graph containing no cycles</li>
+      <li>Simple cycle - a path where the only repeated vertex is the starting/ending one</li>
+      <li>Length (of a path of cycle) - the number of edges in the path/cycle</li>
+      <li>Tree - a connected acyclic graph</li>
+    </ul>
+  </li>
+  <li>Graph properties
+    <ul>
+      <li>The sum of the degrees of the vertices in an undirected graph is an even number
+        <ul>
+          <li>Handshaking theorem - every edge must connect two vertices, so sum of degrees is twice the number of edges, which must be even</li>
+        </ul>
+      </li>
+      <li>An undirected graph with no self loops nor parallel edges, with number of edges \(m\) and number of vertices \(n\) fulfils the property \(m \leq \frac{n \cdot (n-1)}{2}\)
+        <ul>
+          <li>Pigeonhole principle - every vertex can connect to at most \(n-1\) vertices (all the rest of the vertices in the graph), then sum this for \(n\) vertices</li>
+          <li>Fully connected graphs fulfil the property \(m = \frac{n \cdot (n-1)}{2}\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="graphs-as-an-adt">Graphs as an ADT</h2>
+
+<ul>
+  <li>
+    <p>A collection of vertex and edge objects</p>
+  </li>
+  <li>
+    <p>Graphs have a large number of fundamental operations, to the extent it is unnecessary to enumerate them here, but they are essentially just accessor and mutator and count methods on the vertices and edges</p>
+  </li>
+  <li>
+    <p>There are three main concrete implementations of the graph ADT</p>
+
+    <ul>
+      <li>
+        <p>Edge list</p>
+
+        <ul>
+          <li>One list of vertices</li>
+          <li>One list of edges, each of which contain references to their endpoint vertices</li>
+        </ul>
+
+        <p><img src="C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\edgeListGraph.png" alt="edgeListGraph" /></p>
+      </li>
+      <li>
+        <p>Adjacency list</p>
+
+        <ul>
+          <li>Array containing a all of the nodes, each of which have a pointer to a list of the other nodes they connect to</li>
+        </ul>
+
+        <p><img src="C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\adjacencyListGraph.png" alt="adjacencyListGraph" /></p>
+      </li>
+      <li>
+        <p>Adjacency matrix</p>
+
+        <ul>
+          <li>2D array acts a lookup table for whether vertices have an edge connecting them</li>
+          <li>Square matrix, with each dimension being the number of vertices in the graph</li>
+          <li>Undirected graphs are symmetrical along the leading diagonal</li>
+        </ul>
+
+        <p><img src="C:\Users\egood\Desktop\dcs-notes.github.io\cs126\images\adjacencyMatrixGraph.png" alt="adjacencyMatrixGraph" /></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="depth-first-search">Depth-first search</h1>
+
+<p><strong>Algorithm</strong> $DFS(G, v)$ <br />
+     <strong>Input</strong>  graph $G$ and start at vertex $v$ of $G$<br />
+     <strong>Output</strong> labeling of the edges of $G$ in the connected component of v as discovery edges and back edges 
+<br />
+<br />
+     
+$setLabel(v, VISITED)$ <br />
+     
+<strong>for all</strong> $e \in G.incidentEdges(v)$ <br />
+         
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+            
+$w \leftarrow opposite(v,e)$ <br />
+            
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                
+$setLabel(e, DISCOVERY)$ <br />
+                
+$DFS(G, w)$ <br />
+            
+<strong>else</strong> <br />
+                
+$setLabel(e,BACK)$ <br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<p><br />
+<br />
+<br /></p>
+
+<h3 id="dfs-for-an-entire-graph">DFS for an entire graph:</h3>
+<p>The following algorithm is pseudocode for Depth First Search - as displayed by the CS126 lectures, which is used to perform depth first search on the entire graph.</p>
+
+<p><strong>Algorithm</strong> $DFS(G)$ <br />
+     <strong>Input</strong>  graph $G$ <br />
+     <strong>Output</strong> labelling of the edges of $G$ as discovery and back edges
+<br />
+<br />
+     <strong>for all</strong> $u \in G.vertices()$ <br />
+         <strong>$setLabel(u, UNEXPLORED)$</strong> <br /></p>
+
+<p>     <strong>for all</strong> $e \in G.edges()$ <br />
+         <strong>$setLabel(e, UNEXPLORED)$</strong> <br /></p>
+
+<p>     <strong>for all</strong> $u \in G.vertices()$ <br />
+         <strong>if $getLabel(u, UNEXPLORED)$</strong> <br />
+             $DFS(G, v)$ <br /></p>
+
+<p><strong>END ALGORITHM</strong>
+<br /></p>
+
+<p><strong>Algorithm</strong> $DFS(G, v)$ <br />
+     <strong>Input</strong>  graph $G$ and start at vertex $v$ of $G$<br />
+     <strong>Output</strong> labeling of the edges of $G$ in the connected component of v as discovery edges and back edges 
+<br />
+<br />
+     
+$setLabel(v, VISITED)$ <br />
+     
+<strong>for all</strong> $e \in G.incidentEdges(v)$ <br />
+         
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+            
+$w \leftarrow opposite(v,e)$ <br />
+            
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                
+$setLabel(e, DISCOVERY)$ <br />
+                
+$DFS(G, w)$ <br />
+            
+<strong>else</strong> <br />
+                
+$setLabel(e,BACK)$ <br /></p>
+
+<p><strong>END ALGORITHM</strong>
+<br /><br /><br /></p>
+
+<h3 id="path-finding-with-dfs">Path Finding with DFS</h3>
+
+<p>By using an alteration of the depth first search algorithm, we can use it to find a path between two given vertices, using the <strong>template method pattern</strong></p>
+
+<p><strong>Algorithm</strong>
+$pathDFS(G,v,z)$ <br />
+    
+$setLabel(v, VISITED)$ <br />
+    
+$S.push(v)$<br />
+    
+<strong>if</strong> $v=z$<br />
+        
+<strong>return</strong> $S.elements()$ <br />
+    
+<strong>for all</strong> $e \in G.incidentEdges(v)$<br />
+        
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+            
+$w \leftarrow opposite(v,e)$ <br />
+            
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                
+$setLabel(e,DISCORVERY)$ <br />
+                
+$S.push(e)$<br />
+                
+$pathDFS(G,w,z)$<br />
+                
+$S.pop(e)$<br />
+            
+<strong>else</strong><br />
+                
+$setLabel(e, BACK)$<br />
+        
+$S.pop(v)$<br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<p><br /><br /><br /></p>
+
+<h3 id="cycle-finding-with-dfs">Cycle Finding with DFS</h3>
+
+<ul>
+  <li>The algorithm for DFS can be adapted slightly in order to find a simply cycle back to the start node.</li>
+</ul>
+
+<p><strong>Algorithm</strong> $cycleDFS(G,v)$<br />
+    
+$setLabel(v,VISITED)$ <br />
+    
+$S.push(v)$ <br />
+    
+<strong>for all</strong> $e \in G.incidentEdges(v)$<br />
+        
+<strong>if</strong> $getLabel(e) = UNEXPLORED$<br />
+            
+$w \leftarrow opposite(v,e)$<br />
+            
+$S.push(e)$ <br />
+            
+<strong>if</strong> $getLabel(w)= UNEXPLORED$ <br />
+                
+<strong>if</strong> $setLabel(e,DISCOVERY)$ <br />
+                
+$cycleDFS(G,w)$ <br />
+                
+$S.pop(e)$<br />
+            
+<strong>else</strong> <br />
+                
+<strong>T</strong> $\leftarrow$ new empty stack <br />
+                
+<strong>repeat</strong><br />
+                    
+$o \leftarrow S.pop()$ <br />
+                    
+$T.push(o)$ <br />
+                
+<strong>until</strong> $o=w$<br />
+                
+<strong>return</strong> $T.elements()$ <br />
+    
+$S.pop(v)$<br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<h1 id="breadth-first-search">Breadth-first search</h1>
+
+<p><strong>Algorithm</strong> $BFS(G)$ <br />
+    
+<strong>Input</strong> graph $G$ <br />
+    
+<strong>Output</strong> labeling of the edges and partition of the vertices of G<br />
+    
+<strong>for all</strong> $e \in G.vertices()$ <br />
+        
+$setLabel(u, UNEXPLORED)$ <br />
+    
+<strong>for all</strong> $e \in G.edges()$ <br />
+        
+$setLabel(e, UNEXPLORED)$ <br />
+    
+<strong>for all</strong> $v \in G.vertices()$<br />
+        
+<strong>if</strong> $getLabel(v) = UNEXPLORED$ <br />
+            
+$BFS(G,v)$
+<br /></p>
+
+<p><strong>END ALGORITHM</strong>
+<br /><br /><br />
+<strong>Algorithm</strong> $BFS(G, s)$ <br />
+    
+$L_0 \leftarrow$ new empty sequence <br />
+    
+$L_0 .addLast(s)$  <br />
+    
+$setLabel(s, VISITED)$ <br />
+    
+$i \leftarrow 0$ <br />
+    
+<strong>while</strong> $¬L_i .isEmpty()$ <br />
+        
+$L_i+1 \leftarrow$ new empty sequence <br />
+        
+<strong>for all</strong> $v\in L_i .elements()$ <br />
+            
+<strong>for all</strong> $e \in G.incidentEdges(v)$ <br />
+                
+<strong>if</strong> $getLabel(e) = UNEXPLORED$ <br />
+                    
+$w \leftarrow opposite(v,e)$ <br />
+                    
+<strong>if</strong> $getLabel(w) = UNEXPLORED$ <br />
+                        
+$setLabel(e) = (e, DISCOVERY)$ <br />
+                        
+$setLabel(w,VISITED)$ <br />
+                        
+$L_i+1 .addLast(w)$ <br />
+                    
+<strong>else</strong> <br />
+                        
+$setLabel(e,CROSS)$ <br />
+        
+$i \leftarrow i + 1$
+<br /></p>
+
+<p><strong>END ALGORITHM</strong></p>
+
+<h1 id="directed-graphs">Directed graphs</h1>
+
+<p><strong>Algorithm</strong> $FloydWarshall(G)$ <br />
+    
+<strong>Input</strong> digraph $G$ <br />
+    
+<strong>Output</strong> transitive closure $G^*$ of $G$ <br /><br />
+    
+$i \leftarrow 1$ <br />
+    
+<strong>for all</strong> $v \in G.vertices()$ <br />
+        
+denote $v$ as $v_i$ <br />
+        
+$i \leftarrow i + 1$ <br />
+    
+$G_0 \leftarrow G$ <br />
+    
+<strong>for</strong> $k \leftarrow 1$ <strong>to</strong> $n$ <strong>do</strong><br />
+        
+$G_k \leftarrow G_{k-1}$ <br />
+            
+<strong>for</strong> $i\leftarrow 1$ <strong>to</strong> $n(i\neq k)$ <strong>do</strong> <br />
+                
+<strong>for</strong> $j \leftarrow 1$ <strong>to</strong> $n(j\neq i, k)$ <strong>do</strong> <br />
+                    
+<strong>if</strong> $G_{k-1}.areAdjacent(v_i,v_k)$  $\&amp;$ $G_{k-1}.areAdjacent(v_k,v_j)$ <br />
+                        
+<strong>if</strong> $¬G_{k-1}.areAdjacent(v_i,v_j)$ <br />
+                            
+$G_k.insertDirectedEdge(v_i,v_j,k)$<br />
+        
+<strong>return</strong> $G_n$
+<br /><br /><br /></p>
+
+<h3 id="topological-ordering-using-dfs">Topological ordering using DFS</h3>
+
+<p><strong>Algorithm</strong> $topologicalDFS(G)$ <br />
+    
+<strong>Input</strong> dag $G$<br />
+    
+<strong>Output</strong> topotlogical ordering of G <br /><br />
+    
+$n \leftarrow G.numVertices()$ <br />
+    
+<strong>for all</strong> $u\in G.vertices()$ <br />
+        
+$setLabel(,UNEXPLORED)$ <br />
+    
+<strong>for all</strong> $v\in G.vertices()$ <br />
+        
+<strong>if</strong> $getLabel(v) = UNEXPLORED$ <br />
+            
+$topologicalDFS(G,v)$
+<br /><br /><br />
+<strong>Algorithm</strong> $topologicalDFS(G,v)$ <br />
+    
+<strong>Input</strong> graph $G$ and start a vertex $v$ of $G$ <br />
+    
+<strong>Output</strong> labeling of the vertices of G in the connected component of $v$ <br /><br />
+    
+$setLabel(v, VISITED)$ <br />
+    
+<strong>for all</strong> $e\in G.outEdges(v)$  <br />
+        
+$w\in opposite(v,e)$ // Outgoing edges <br />
+        
+<strong>if</strong> $getLabel(w) = UNEXPLORED$  <br />
+            
+$topologicalDFS(G,w)$ // $e$ is a discovery edge<br />
+        
+<strong>else</strong> <br />
+            
+Label $v$ with topological number $n$ // $e$ is a forward or cross edge<br />
+        
+$n\leftarrow n - 1$ <br /></p>
+
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

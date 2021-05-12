@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Maps, hash tables and sets | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Maps, hash tables and sets" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Maps (ADT) “Searchable collection of key-value entries” (Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser) Duplicate keys cannot exist Fundamental operations contains(e), get(e), put(e), remove(e), size(), isEmpty() sometimes additional operations for getting lists of all keys or all values Two concrete implementations List based implementation \(O(n)\) lookup and insertion (need to check for duplicates) time \(O(n)\) space complexity Hash table based implementation \(O(1)\) lookup and insertion time \(O(k \cdot n)\) space complexity (still linear with number of items, but larger by a big constant factor)" />
+<meta property="og:description" content="Maps (ADT) “Searchable collection of key-value entries” (Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser) Duplicate keys cannot exist Fundamental operations contains(e), get(e), put(e), remove(e), size(), isEmpty() sometimes additional operations for getting lists of all keys or all values Two concrete implementations List based implementation \(O(n)\) lookup and insertion (need to check for duplicates) time \(O(n)\) space complexity Hash table based implementation \(O(1)\) lookup and insertion time \(O(k \cdot n)\) space complexity (still linear with number of items, but larger by a big constant factor)" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part5.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part5.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Maps, hash tables and sets" />
+<script type="application/ld+json">
+{"description":"Maps (ADT) “Searchable collection of key-value entries” (Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser) Duplicate keys cannot exist Fundamental operations contains(e), get(e), put(e), remove(e), size(), isEmpty() sometimes additional operations for getting lists of all keys or all values Two concrete implementations List based implementation \\(O(n)\\) lookup and insertion (need to check for duplicates) time \\(O(n)\\) space complexity Hash table based implementation \\(O(1)\\) lookup and insertion time \\(O(k \\cdot n)\\) space complexity (still linear with number of items, but larger by a big constant factor)","headline":"Maps, hash tables and sets","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part5.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part5.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Maps, hash tables and sets</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#maps-adt">Maps (ADT)</a></li><li><a href="#hash-tables-concrete-implementation">Hash tables (Concrete implementation)</a></li><li><a href="#sets-adt">Sets (ADT)</a></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part4.html" title="Trees">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part6.html" title="Stacks and Queues">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<h1 id="maps-adt">Maps (ADT)</h1>
+<ul>
+  <li>“Searchable collection of key-value entries” (<em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser)</li>
+  <li>Duplicate keys cannot exist</li>
+  <li>Fundamental operations
+    <ul>
+      <li>contains(e), get(e), put(e), remove(e), size(), isEmpty() <em>sometimes additional operations for getting lists of all keys or all values</em></li>
+    </ul>
+  </li>
+  <li>Two concrete implementations
+    <ul>
+      <li>List based implementation
+        <ul>
+          <li>\(O(n)\) lookup and insertion (need to check for duplicates) time</li>
+          <li>\(O(n)\) space complexity</li>
+        </ul>
+      </li>
+      <li>Hash table based implementation
+        <ul>
+          <li>\(O(1)\) lookup and insertion time</li>
+          <li>\(O(k \cdot n)\) space complexity (still linear with number of items, but larger by a big constant factor)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="hash-tables-concrete-implementation">Hash tables (Concrete implementation)</h1>
+<ul>
+  <li>Time efficient implementation of the Map abstract data type</li>
+  <li>To look up keys in \(O(1)\) time, we want essentially want to be able to index an array of them, but the space of keys are far too large to conceivably keep one element in the array for each key</li>
+  <li>Hash functions
+    <ul>
+      <li>We use a “hash function” to reduce the size of the keyspace, so we can used the hashed outputs of keys for indices in the array storing the map</li>
+      <li>A hash function \(h : keys \rightarrow indices\) maps keys of a given type to integers in a fixed interval \([0, N-1]\) where \(N\) is the size of the array to store the items in</li>
+      <li>Modern implementations of hash functions are very complicated, and often involve two phases, first mapping keys to integers, then reducing the range of those integers, but simpler ones exist, for example \(h(x) =  x\ MOD\ N\)
+        <ul>
+          <li>We try to pick \(N\) such that there are fewer collisions - numbers with few factors are better</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Collisions are when two different keys are mapped to the same index by the hash function. Since we cannot store duplicate keys unambiguously in a map, we need a protocol to resolve this. Common approaches are
+    <ul>
+      <li>Separate chaining
+        <ul>
+          <li>Each index in the array can contain a reference to a linked list. Whenever a key is mapped to that index, the key-value pair is added to the linked-list. If there are duplicates, we iterate over the chain till we find the key, or reach the end
+<img src="./images/separateChaining.png" alt="separateChaining" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+          <li>This has the drawback of requiring additional memory space for each linked list</li>
+        </ul>
+      </li>
+      <li>Linear probing
+        <ul>
+          <li>When colliding items are placed in different cells in the table, it is called “open addressing”</li>
+          <li>Linear probing handles collisions by placing the colliding item in the next available table cell, wrapping around if necessary</li>
+          <li>As with the linked list, searching is done by iterating over the next cells, stopping when the item is found, or an empty cell in the table is reached</li>
+          <li>This has the drawback of colliding items “lumping together”, which can cause many items needed to be iterated over in a probe</li>
+          <li>To remove an item, we cannot just set it to null again, as that would mean it stops probing, even though there might be subsequent elements. Instead, we replace it with a “DEFUNCT” element, which is just skipped over when probing</li>
+        </ul>
+      </li>
+      <li>Double hashing
+        <ul>
+          <li>When a collision occurs, the key is re-hashed with a new hash function
+            <ul>
+              <li>Sometimes \([h(k) + i \cdot f(k)]\ MOD\ N\) where \(h\) and \(f\) are hashing functions, and \(i \in \mathbb{Z}\) is used</li>
+              <li>As before, there are many implementations of the hash function, but \(f(k)= q-k\ MOD\ q \quad \| \quad q&lt;N, q \in primes\)</li>
+            </ul>
+          </li>
+          <li>Searching is similar to linear probing, but when iterating we look at the hash value for each \(i\), rather than just the next index in the table</li>
+          <li>This helps avoid the issue of colliding items “lumping together” as in linear probing</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Resizing a hash table
+    <ul>
+      <li>As with arrays, we create a new table of a larger size, then iterate over every index in the table, and apply the standard add operation to add it to the new one (re-hashing)</li>
+    </ul>
+  </li>
+  <li>Performance of hash tables
+    <ul>
+      <li>The load factor of a hash table is the ratio of the number of items it contains to the capacity of the array \(\alpha = \frac{n}{N}\)
+        <ul>
+          <li>If this approaches \(1\), the table becomes inefficient, so we often re-size the table whenever it exceeds a certain value, e.g. \(0.75\)</li>
+        </ul>
+      </li>
+      <li>Time complexity of insertion/lookup
+        <ul>
+          <li>\(\Theta(1)\) best case</li>
+          <li>\(O(n)\) worst case</li>
+          <li>“Expected” number of probes with open addressing is \(\frac{1}{1-\alpha}\)</li>
+        </ul>
+      </li>
+      <li>In practice, hash tables are a very efficient implementation of maps assuming the load factor is not very close to \(1\)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="sets-adt">Sets (ADT)</h1>
+<ul>
+  <li>“A set is an unordered collection of elements, without duplicates that typically supports efficient membership tests” <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+  <li>Fundamental operations
+    <ul>
+      <li>add(e), remove(e), contains(e), size(e), isEmpty(e)</li>
+    </ul>
+  </li>
+  <li>Set operations
+    <ul>
+      <li>union(s1, s2), intersection(s1, s2), difference(s1, s2)</li>
+    </ul>
+  </li>
+  <li>Two concrete implementations
+    <ul>
+      <li>Can be implemented with a linked list (for efficient resizing, and needn’t be indexable) storing the elements
+        <ul>
+          <li>Need to iterate over each element in the list to lookup items, \(O(n)\) time complexity</li>
+          <li>Fairly small space complexity</li>
+        </ul>
+      </li>
+      <li>Can be implemented like a hash-table, but using only keys, not key-value pairs, in “hash-sets”
+        <ul>
+          <li>Fast \(O(1)\) lookups</li>
+          <li>Large space complexity</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

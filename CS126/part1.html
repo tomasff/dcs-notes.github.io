@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Arrays and Lists | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Arrays and Lists" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Arrays (ADT) Indexable fixed length sequence of variables of the type, stored contiguously in memory To get/set a value at an index in the array, directly look at the data at a memory address \(O(1)\) operation To insert/delete an element, all the proceeding elements in the array need to be “shuffled up/down” to accommodate it \(O(n)\) operation To resize the array, a new, larger contiguous block of memory needs to be allocated, then all the data copied into that \(O(n)\) operation Fundamental operations size(), isEmpty(), get(i), set(i,e)" />
+<meta property="og:description" content="Arrays (ADT) Indexable fixed length sequence of variables of the type, stored contiguously in memory To get/set a value at an index in the array, directly look at the data at a memory address \(O(1)\) operation To insert/delete an element, all the proceeding elements in the array need to be “shuffled up/down” to accommodate it \(O(n)\) operation To resize the array, a new, larger contiguous block of memory needs to be allocated, then all the data copied into that \(O(n)\) operation Fundamental operations size(), isEmpty(), get(i), set(i,e)" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part1.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part1.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Arrays and Lists" />
+<script type="application/ld+json">
+{"description":"Arrays (ADT) Indexable fixed length sequence of variables of the type, stored contiguously in memory To get/set a value at an index in the array, directly look at the data at a memory address \\(O(1)\\) operation To insert/delete an element, all the proceeding elements in the array need to be “shuffled up/down” to accommodate it \\(O(n)\\) operation To resize the array, a new, larger contiguous block of memory needs to be allocated, then all the data copied into that \\(O(n)\\) operation Fundamental operations size(), isEmpty(), get(i), set(i,e)","headline":"Arrays and Lists","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part1.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part1.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Arrays and Lists</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#arrays-adt">Arrays (ADT)</a></li><li><a href="#lists-adt">Lists (ADT)</a><ul><li><a href="#positional-lists-adt">Positional lists (ADT)</a></li><li><a href="#linked-lists-adt">Linked lists (ADT)</a><ul><li><a href="#singly-linked-lists-concrete-implementation">Singly linked lists (Concrete implementation)</a></li><li><a href="#doubly-linked-lists-concrete-implementation">Doubly linked lists (Concrete implementation)</a></li></ul></li></ul></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part10.html" title="">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<h1 id="arrays-adt">Arrays (ADT)</h1>
+<ul>
+  <li>Indexable fixed length sequence of variables of the type, stored contiguously
+in memory</li>
+  <li>To get/set a value at an index in the array, directly look at the data at a
+memory address
+    <ul>
+      <li>\(O(1)\) operation</li>
+    </ul>
+  </li>
+  <li>To insert/delete an element, all the proceeding elements in the array need to
+be “shuffled up/down” to accommodate it
+    <ul>
+      <li>\(O(n)\) operation</li>
+    </ul>
+  </li>
+  <li>To resize the array, a new, larger contiguous block of memory needs to be
+allocated, then all the data copied into that
+    <ul>
+      <li>\(O(n)\) operation</li>
+    </ul>
+  </li>
+  <li>Fundamental operations
+    <ul>
+      <li>size(), isEmpty(), get(i), set(i,e)</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="lists-adt">Lists (ADT)</h1>
+<ul>
+  <li>A list is called homogenous if it is all of the same type</li>
+  <li>Array based implementation  <strong>(Concrete)</strong>
+    <ul>
+      <li>Arrays provide all the required properties, except being able to change
+size. To “grow” an array, we make a new array of a larger size, and copy all
+the data across to it.</li>
+      <li>Need to decide how large the new array should be
+        <ul>
+          <li>Incremental strategy - when the capacity is exceeded, grow it by a
+constant number of elements \(c\)
+            <ul>
+              <li>Amortized (average) time of each push is \(\Omega(n^2)\)</li>
+              <li>Space grows linearly, so quite space efficient</li>
+            </ul>
+          </li>
+          <li>Doubling strategy - when the capacity is exceeded, double it
+            <ul>
+              <li>Amortized (average) time of each push is \(\Omega(n)\)</li>
+              <li>Space grows exponentially, so less space efficient</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Fundamental operations
+    <ul>
+      <li>size(), isEmpty(), get(i), set(i,e), add(i,e), remove(i)</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="positional-lists-adt">Positional lists (ADT)</h2>
+<ul>
+  <li>“General abstraction of a sequence of elements with the ability to identify
+the location of an element, without indices” (<em>Data Structures and Algorithms
+in Java</em>, Goodrich, Tamassia, Goldwasser)</li>
+  <li>A “position” is a marker within the list, which is unaffected by changes
+elsewhere
+    <ul>
+      <li>Insertion/deletion of other elements doesn’t change it, the only time it
+changes is when it itself is deleted</li>
+    </ul>
+  </li>
+  <li>Fundamental operations
+    <ul>
+      <li>addFirst(e), addLast(e), addBefore(p,e), addAfter(p,e), set(p,e), remove(p)</li>
+    </ul>
+  </li>
+  <li>Generally implemented as a doubly linked list</li>
+</ul>
+
+<h2 id="linked-lists-adt">Linked lists (ADT)</h2>
+<ul>
+  <li>A collection of elements that can be accessed in a sequential way (not
+indexable)</li>
+  <li>Can more easily implement non-homogenous lists, as opposed to using arrays</li>
+  <li><a href="https://lucasmagnum.medium.com/sidenotes-linked-list-abstract-data-type-and-data-structure-fd2f8276ab53">Additional
+resource</a></li>
+</ul>
+
+<h3 id="singly-linked-lists-concrete-implementation">Singly linked lists (Concrete implementation)</h3>
+<ul>
+  <li>A sequence of nodes, each of which stores both a value and a pointer to the
+next node in the sequence. There is a pointer to the first node in the
+sequence, and the final node in the sequence is a null pointer \(\emptyset\)</li>
+  <li>To get/set a value at an arbitrary index in the array, need to iterate over
+the list from the head until the index is reached
+    <ul>
+      <li>\(O(n)\) operation</li>
+    </ul>
+  </li>
+  <li>Insertion/deletion to an arbitrary index is similar to getting/setting, but
+pointers are changed instead of values, either to bypass or include a new node
+in the sequence
+    <ul>
+      <li>\(O(n)\) operation</li>
+    </ul>
+  </li>
+  <li>Operations on the head of the list are \(O(1)\) operations</li>
+  <li>The list can only be traversed forwards</li>
+  <li>Fundamental operations
+    <ul>
+      <li>addFirst(e), addAfter(p,e), set(p,e), remove(p)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="doubly-linked-lists-concrete-implementation">Doubly linked lists (Concrete implementation)</h3>
+<ul>
+  <li>
+    <ul>
+      <li>A sequence of nodes, each of which stores both a value and a pointer to both
+the next and the previous node in the sequence. At each end there are
+special header and trailer nodes, which are just references to the first and
+last nodes in the sequence</li>
+      <li>As with singly linked lists, getting/setting and insertion/deletion are
+\(O(n)\) operations, needing to iterate from the start or the end of the list
+to get to the index</li>
+      <li>Operations on <strong>both</strong> the head and the tail of the list are \(O(1)\)
+operations</li>
+      <li>The list can be traversed <strong>both</strong> forwards and backwards</li>
+      <li>Fundamental operations (same as positional list, as it is a concrete
+implementation of it)
+        <ul>
+          <li>addFirst(e), addLast(e), addBefore(p,e), addAfter(p,e), set(p,e),
+remove(p)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

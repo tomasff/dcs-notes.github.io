@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Priority queues | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Priority queues" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Priority queues (ADT)" />
+<meta property="og:description" content="Priority queues (ADT)" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part7.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part7.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Priority queues" />
+<script type="application/ld+json">
+{"description":"Priority queues (ADT)","headline":"Priority queues","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part7.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part7.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Priority queues</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#priority-queues-adt">Priority queues (ADT)</a></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part6.html" title="Heaps">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part8.html" title="Trees">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<h1 id="priority-queues-adt">Priority queues (ADT)</h1>
+
+<ul>
+  <li>Similar to queues, items are sorted in order of a property “priority”, then FIFO across elements of the same “priority” (unlike maps, multiple elements can have the same priority)
+    <ul>
+      <li>Fundamental operations
+        <ul>
+          <li>enqueue(e, p), dequeue(), size(), isEmpty()</li>
+        </ul>
+      </li>
+      <li>The priorities, sometimes called keys, must form a total order relation, for example \(x \leq y\). We often use comparators on keys to form this total order relation</li>
+      <li>Comparators <strong>(ADT)</strong>
+        <ul>
+          <li>“Encapsulates the action of comparing two objects from a given total order” <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+          <li>The comparator is external to the keys being compared</li>
+        </ul>
+      </li>
+      <li>Various concrete implementations
+        <ul>
+          <li>Unsorted list based <strong>(Concrete)</strong>
+            <ul>
+              <li>To enqueue an item, we just add it to the end of the list, in \(O(1)\) time</li>
+              <li>to dequeue an item, we have to traverse the entire list to find the smallest item, taking \(O(n)\) time</li>
+            </ul>
+          </li>
+          <li>Sorted list <strong>(Concrete)</strong>
+            <ul>
+              <li>To enqueue an item, we have to traverse the list to find where to put it, taking \(O(n)\) time (but we normally wouldn’t need to traverse the entire list, unlike dequeuing in the unsorted implementation, which also must)</li>
+              <li>To dequeue an item, we just take it from the front of the list, in \(O(1)\) time</li>
+            </ul>
+          </li>
+          <li>For both, a positional/linked list should be used (for unsorted, doubly linked is needed)  since we want to be able to grow the list, but don’t need to be able to index it</li>
+          <li>Heap based <strong>(Concrete)</strong></li>
+        </ul>
+      </li>
+      <li>Sorting with list based priority queues
+        <ul>
+          <li>We can sort a set of items by enqueueing them one by one, using the priority as the total ordering to sort by, and then dequeuing them into a list will result in them being sorted</li>
+          <li>When the unsorted concrete implementation is used, this encodes “selection sort”
+            <ul>
+              <li>The steps taken in the sort are:
+                <ol>
+                  <li>Enqueue all \(n\) elements, each taking \(O(1)\) time into the priority queue, taking \(O(n)\) time</li>
+                  <li>Dequeue all the elements into sorted order, with the total calls taking \(O(n) + O(n-1) + ... + O(1)\), which is \(O(n^2)\) time
+Hence, the total time complexity is \(O(n^2)\)</li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+          <li>When the unsorted concrete implementation is used, this encodes “insertion sort”
+            <ul>
+              <li>The steps taken in the sort are:
+                <ol>
+                  <li>Enqueue \(n\) elements, with the total calls taking \(O(1) + O(2) + ... + O(n)\), which is \(O(n^2)\) time</li>
+                  <li>Dequeue all \(n\) items, each taking \(O(1)\), taking \(O(n)\) time
+Hence, the total time complexity is \(O(n^2)\)</li>
+                </ol>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

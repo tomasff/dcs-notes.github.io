@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Binary search and self-balancing trees | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Binary search and self-balancing trees" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Binary search trees" />
+<meta property="og:description" content="Binary search trees" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part10.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part10.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Binary search and self-balancing trees" />
+<script type="application/ld+json">
+{"description":"Binary search trees","headline":"Binary search and self-balancing trees","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part10.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part10.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Binary search and self-balancing trees</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#binary-search-trees">Binary search trees</a></li><li><a href="#avl-trees">AVL trees</a></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part1.html" title="Graphs">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part11.html" title="Arrays and Lists">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<h1 id="binary-search-trees">Binary search trees</h1>
+
+<ul>
+  <li>
+    <p>Binary search trees used as a concrete implementation of ordered maps, with items being stored in the tree ordered by their key</p>
+
+    <ul>
+      <li>Search tables are another concrete implementation of ordered maps, but instead use a sorted sequence, normally an array, which is searchable with binary search in \(O(log\ n)\), but requires \(O(n)\) for insertion and removal. This means they are only effective for either small maps, or cases where there are few insertions and deletions</li>
+    </ul>
+  </li>
+  <li>
+    <p>Supports nearest neighbour queries, finding next highest and next lowest items</p>
+  </li>
+  <li>
+    <p>Properties of binary search trees</p>
+
+    <ul>
+      <li>External nodes store no items</li>
+      <li>All left children of any internal node have a smaller key than their parent node</li>
+      <li>All right children of any internal node have a larger key than their parent node</li>
+      <li>In-order traversals yield a sequence of the keys in ascending order</li>
+    </ul>
+  </li>
+  <li>
+    <p>Searching</p>
+
+    <ul>
+      <li>
+        <p>Start at the root, and recursively proceed down the appropriate subtrees until the key or an external node is found</p>
+
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Function Search(n, k)
+	If n is an external node
+		Return that the key is not in the tree
+	Else if the key being searched for is less than the value of the current node
+		Return Search called on the left child of n, and the same k
+	Else if the key being searched for is greater than the value of the current node
+		Return Search called on the right child of n, and the same k
+	Else (the key is equal to the one being search for)
+		Return that the key is in the tree
+    
+Let r &lt;- the root node of the tree to search
+Let k &lt;- the key to search for
+Search(r, k)
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Insertion</p>
+
+    <ul>
+      <li>Perform the searching operation, but when an external node is found, instead of returning that the key is not present, set that internal node as the key to insert, and give it two external child nodes</li>
+    </ul>
+  </li>
+  <li>
+    <p>Deletion</p>
+
+    <ul>
+      <li>If the node has no internal children
+        <ul>
+          <li>Replace it with an external key</li>
+        </ul>
+      </li>
+      <li>If the node has only one internal child
+        <ul>
+          <li>Overwrite it with that child</li>
+          <li>Discard the previous position of the child and its children,</li>
+          <li>Add two external nodes to it</li>
+        </ul>
+      </li>
+      <li>If the node has two internal children
+        <ul>
+          <li>Find the node that immediately follows it in an in-order traversal</li>
+          <li>Overwrite it with that node</li>
+          <li>Set that node to be external, and discard its left child, which must itself be an external node</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Performance</p>
+
+    <ul>
+      <li>In all cases, the space complexity is \(O(n)\)</li>
+      <li>The time complexity for searching, inserting and deleting is dependent on the height of the tree
+        <ul>
+          <li>If the tree is balanced, then the height is \(log\ n\), so the time for these operations is \(O(log\ n)\)</li>
+          <li>In the worst case, the tree can be totally unbalanced, just a straight line of internal nodes, in which case the height is \(n\), so the time for these operations is \(O(n)\)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="avl-trees">AVL trees</h1>
+
+<ul>
+  <li>
+    <p>AVL trees are a concrete implementation of self-balancing binary search tree</p>
+
+    <ul>
+      <li>Insertion and deletion operations re-arrange the tree to ensure it remains balanced</li>
+      <li>Named after its creators, Adelson-Velsky and Landis</li>
+      <li>Other self-balancing binary search trees exist, such as red-black trees, but this is a common approach to implementing such an ADT</li>
+    </ul>
+  </li>
+  <li>
+    <p>Requirements to be a self-balancing binary search tree</p>
+
+    <ul>
+      <li>Each node has at most two child nodes</li>
+      <li>For every internal node in the tree, the heights of the child subtrees can differ by at most one</li>
+    </ul>
+  </li>
+  <li>
+    <p>These requirements ensure that the maximum height to store \(n\) keys is \(log\ n\), which can be proved by induction</p>
+  </li>
+  <li>
+    <p>Searching is approached as it is in a normal binary search tree</p>
+
+    <p><em>incomplete</em></p>
+  </li>
+  <li>
+    <p>Tri-node restructuring</p>
+  </li>
+  <li>
+    <p>Re-balancing VS restructuring</p>
+  </li>
+  <li>
+    <p>Insertion</p>
+  </li>
+  <li>
+    <p>Deletion</p>
+  </li>
+  <li>
+    <p>Performance</p>
+
+    <ul>
+      <li>In all cases, the space complexity is \(O(n)\)</li>
+      <li>Searching takes \(O(log\ n)\) time</li>
+      <li>Insertion and deletion are also \(O(log\ n)\), as searching for the element is \(O(log\ n)\), and then restructuring the tree to maintain the balance property is also \(O(log\ n)\)</li>
+    </ul>
+  </li>
+</ul>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

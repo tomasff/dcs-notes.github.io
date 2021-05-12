@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Stacks and Queues | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Stacks and Queues" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Stacks (ADT) A “Last in, first out” (LIFO) data structure - both insertions and deletions occur at the front of the stack Two fundamental operations push(e), pop(), size(), isEmpty() Edge case of popping from an empty stack, normally either returns null or throws an error Array based implementation (Concrete) Index of head stored, and incremented/decremented on pushing/popping operations \(O(n)\) space complexity \(O(1)\) time complexity of fundamental operations" />
+<meta property="og:description" content="Stacks (ADT) A “Last in, first out” (LIFO) data structure - both insertions and deletions occur at the front of the stack Two fundamental operations push(e), pop(), size(), isEmpty() Edge case of popping from an empty stack, normally either returns null or throws an error Array based implementation (Concrete) Index of head stored, and incremented/decremented on pushing/popping operations \(O(n)\) space complexity \(O(1)\) time complexity of fundamental operations" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part4.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part4.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Stacks and Queues" />
+<script type="application/ld+json">
+{"description":"Stacks (ADT) A “Last in, first out” (LIFO) data structure - both insertions and deletions occur at the front of the stack Two fundamental operations push(e), pop(), size(), isEmpty() Edge case of popping from an empty stack, normally either returns null or throws an error Array based implementation (Concrete) Index of head stored, and incremented/decremented on pushing/popping operations \\(O(n)\\) space complexity \\(O(1)\\) time complexity of fundamental operations","headline":"Stacks and Queues","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part4.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part4.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Stacks and Queues</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#stacks-adt">Stacks (ADT)</a></li><li><a href="#queues-adt">Queues (ADT)</a></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part3.html" title="Maps, hash tables and sets">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part5.html" title="Recursive algorithms">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<h1 id="stacks-adt">Stacks (ADT)</h1>
+<ul>
+  <li>A “Last in, first out” (LIFO) data structure - both insertions and deletions occur at the front of the stack</li>
+  <li>Two fundamental operations
+    <ul>
+      <li>push(e), pop(), size(), isEmpty()</li>
+    </ul>
+  </li>
+  <li>Edge case of popping from an empty stack, normally either returns null or throws an error</li>
+  <li>Array based implementation  <strong>(Concrete)</strong>
+    <ul>
+      <li>Index of head stored, and incremented/decremented on pushing/popping operations</li>
+      <li>\(O(n)\) space complexity</li>
+      <li>\(O(1)\) time complexity of fundamental operations</li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="queues-adt">Queues (ADT)</h1>
+<ul>
+  <li>A “First in, first out” (FIFO) data structure - insertions occur at the rear and removals at the front of the queue</li>
+  <li>Fundamental operations
+    <ul>
+      <li>enqueue(e), dequeue(), size(), isEmpty()</li>
+    </ul>
+  </li>
+  <li>Edge case of dequeuing from an empty queue, normally either returns null or throws an error</li>
+  <li>Array based implementation <strong>(Concrete)</strong>
+    <ul>
+      <li>Uses and array with data wrapping around as it is added and removed. Both the index of the head \(f\) <strong>and</strong> the size of the queue \(s\) need to be stored</li>
+      <li>The rear of the queue (index to next insert to) is \((f + s)\ MOD\ N\), with \(N\) as the array size
+<img src="./images/queueArrayImplementation.png" alt="queueArrayImplementation" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+      <li>\(O(n)\) space complexity</li>
+      <li>\(O(1)\) time complexity of fundamental operations</li>
+    </ul>
+  </li>
+</ul>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

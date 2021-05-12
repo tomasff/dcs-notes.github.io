@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>General algorithms | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="General algorithms" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Searching data structures" />
+<meta property="og:description" content="Searching data structures" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part12.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part12.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="General algorithms" />
+<script type="application/ld+json">
+{"description":"Searching data structures","headline":"General algorithms","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part12.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part12.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">General algorithms</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#searching-data-structures">Searching data structures</a></li><li><a href="#linear-search">Linear search</a></li><li><a href="#binary-search">Binary search</a></li><li><a href="#sorting-data-structures">Sorting data structures</a><ul><li><a href="#insertion-sort">Insertion sort</a></li><li><a href="#selection-sort">Selection sort</a></li><li><a href="#heap-sort">Heap sort</a></li><li><a href="#merge-sort">Merge sort</a></li></ul></li><li><a href="#reversing-data-structures">Reversing data structures</a></li><li><a href="#set-operations">Set operations</a></li><li><a href="#misc">Misc</a></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part11.html" title="Analysis of algorithms">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part2.html" title="Graphs">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<h1 id="searching-data-structures">Searching data structures</h1>
+
+<h1 id="linear-search">Linear search</h1>
+<h1 id="binary-search">Binary search</h1>
+
+<h1 id="sorting-data-structures">Sorting data structures</h1>
+
+<h2 id="insertion-sort">Insertion sort</h2>
+<h2 id="selection-sort">Selection sort</h2>
+<h2 id="heap-sort">Heap sort</h2>
+<h2 id="merge-sort">Merge sort</h2>
+
+<h1 id="reversing-data-structures">Reversing data structures</h1>
+<ul>
+  <li>Reversing an array using a stack
+    <ul>
+      <li>Push all the items in array to the stack, then pop all the items off the stack into the new reversed array
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let S &lt;- the stack to reverse
+Let S' &lt;- an empty stack (the output)
+For each item in S
+	Pop the head off S into s
+	Push s to the head of S'
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Reversing a linked list
+    <ul>
+      <li>Iterate over the linked list from the head, and for each element in the list to reverse, set the item as the predecessor of the head in the new reversed list
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let L &lt;- the linked list to reverse
+Let L' &lt;- an empty linked list (the output)
+For each item in S
+	Let l &lt;- the first item in the linked list
+	Delete the first item in the linked list
+	Add l as the head of L'
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="set-operations">Set operations</h1>
+<ul>
+  <li>Generic merging
+    <ul>
+      <li>Taking the union of two sets, in linear time:
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let A, B &lt;- The lists to merge
+Let S &lt;- an empty list (the output)
+While neither A nor B are empty
+	Let a, b &lt;- The first elements of A and B respectively
+	If a &lt; b
+		Add a to the end of S
+		Remove a from A
+	Else if b &lt; a
+		Add b to the end of S
+		Remove b from B
+	Else (hence a=b)
+		Add a to the end of S (both are equal, so it doesn't matter which)
+		Remove a and b from A and B respectively
+(Cleaning up the other list when one is empty)
+While A is not empty
+	Add all the items left in A to the end of S
+While B is not empty
+	Add all the items left in B to the end of S
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="misc">Misc</h1>
+<ul>
+  <li>Computing spans
+    <ul>
+      <li>The span of an array is the maximum number of consecutive elements less than a value at an index which precede it
+This can be calculated in linear time by
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let X &lt;- the array to find spans of
+Let S &lt;- a stack of all the indices in X
+Let i be the current index
+Pop indices from the stack until we find index j such that X[i] &lt; X[j]
+Set S[i] &lt;- i-j
+Push i to the stack
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Fibonacci</li>
+  <li>Exponential time</li>
+  <li>Linear time</li>
+</ul>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

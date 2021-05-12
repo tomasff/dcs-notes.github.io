@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Trees | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Trees" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Trees (ADT) “A tree is an abstract model of a hierarchical structure” Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Fundamental methods size(), isEmpty(), root(), parent(n), children(n), numChildren(n) Traversals Pre-order traversal Each node is printed before its descendants, and descendants are taking in ascending order Let n &lt;- the root node of the graph Function preOrder(n) Print n For each child m of n preOrder(n) Post-order traversal Each node is printed after its descendants, and descendants are taking in ascending order Let n &lt;- the root node of the graph Function preOrder(n) For each child m of n preOrder(n) Print n" />
+<meta property="og:description" content="Trees (ADT) “A tree is an abstract model of a hierarchical structure” Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Fundamental methods size(), isEmpty(), root(), parent(n), children(n), numChildren(n) Traversals Pre-order traversal Each node is printed before its descendants, and descendants are taking in ascending order Let n &lt;- the root node of the graph Function preOrder(n) Print n For each child m of n preOrder(n) Post-order traversal Each node is printed after its descendants, and descendants are taking in ascending order Let n &lt;- the root node of the graph Function preOrder(n) For each child m of n preOrder(n) Print n" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part6.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part6.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Trees" />
+<script type="application/ld+json">
+{"description":"Trees (ADT) “A tree is an abstract model of a hierarchical structure” Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Fundamental methods size(), isEmpty(), root(), parent(n), children(n), numChildren(n) Traversals Pre-order traversal Each node is printed before its descendants, and descendants are taking in ascending order Let n &lt;- the root node of the graph Function preOrder(n) Print n For each child m of n preOrder(n) Post-order traversal Each node is printed after its descendants, and descendants are taking in ascending order Let n &lt;- the root node of the graph Function preOrder(n) For each child m of n preOrder(n) Print n","headline":"Trees","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part6.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part6.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Trees</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#trees-adt">Trees (ADT)</a><ul><li><a href="#binary-trees-adt">Binary trees (ADT)</a></li></ul></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part5.html" title="Priority queues">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part7.html" title="Maps, hash tables and sets">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<h1 id="trees-adt">Trees (ADT)</h1>
+<ul>
+  <li>“A tree is an abstract model of a hierarchical structure” <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+  <li>Fundamental methods
+    <ul>
+      <li>size(), isEmpty(), root(), parent(n), children(n), numChildren(n)</li>
+    </ul>
+  </li>
+  <li>Traversals
+    <ul>
+      <li>Pre-order traversal
+        <ul>
+          <li>Each node is printed before its descendants, and descendants are taking in ascending order
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let n &lt;- the root node of the graph
+      
+Function preOrder(n)
+	Print n
+	For each child m of n
+		preOrder(n)
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+      <li>Post-order traversal
+        <ul>
+          <li>Each node is printed after its descendants, and descendants are taking in ascending order
+            <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let n &lt;- the root node of the graph
+      
+Function preOrder(n)
+	For each child m of n
+		preOrder(n)
+	Print n
+</code></pre></div>            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="binary-trees-adt">Binary trees (ADT)</h2>
+<ul>
+  <li>A specialised tree where each node has at most two children, called left and right
+    <ul>
+      <li>A binary search tree with \(n\) nodes, \(e\) external nodes, \(i\) internal nodes, and a height \(h\) has the properties
+        <ul>
+          <li>
+\[e = i + 1\]
+          </li>
+          <li>
+\[n = 2e - 1\]
+          </li>
+          <li>
+\[h \leq i\]
+          </li>
+          <li>
+\[h \leq \frac{(n-1)}{2}\]
+          </li>
+          <li>
+\[e \leq 2^h\]
+          </li>
+          <li>
+\[h \geq log_2 e\]
+          </li>
+          <li>
+\[h \geq log_2 (n+1) - 1\]
+          </li>
+        </ul>
+      </li>
+      <li>Binary trees support an additional type of traversal, in-order, as they have a discrete middle node
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let n &lt;- the root node of the graph
+    
+Function preOrder(n)
+	Print left child of n
+	Print n
+	Print right child of n
+</code></pre></div>        </div>
+      </li>
+    </ul>
+  </li>
+  <li>Linked structure implementation <strong>(Concrete)</strong>
+    <ul>
+      <li>Each node is an object which stores its value, references to its child nodes (and sometimes a reference to its parent)</li>
+      <li>A diagram of such an implementation for a binary tree
+<img src="./images/binaryTreeLinkedStructure.png" alt="binaryTreeLinkedStructure" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+      <li>This is a linear space implementation, and has lookup time of \(O(log_2n)\) for binary trees, and logarithmic time for general trees</li>
+    </ul>
+  </li>
+  <li>Array based implementation of <em>binary</em> trees <strong>(Concrete)</strong>
+    <ul>
+      <li>Node values are stored in an array, and their children can be found at indices based on arithmetic operations of their own index
+        <ul>
+          <li>
+\[index(root) = 0\]
+          </li>
+          <li>If \(l\) is the left child of \(n\), then \(index(l) = 2 \cdot index(n) + 1\)</li>
+          <li>If \(r\) is the right child of \(n\), then \(index(r) = 2 \cdot index(n) + 2\)</li>
+        </ul>
+      </li>
+      <li>This can be very inefficient for unbalanced trees, for example, a tree which is just a “line” of nodes would grow with \(O(2^n)\) space, and has lookup time of \(O(log_2n)\)</li>
+    </ul>
+  </li>
+</ul>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>

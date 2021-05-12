@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang=" en-US">
+
+<head>
+
+    
+    <meta charset="UTF-8"><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- Include tocNAV javascript -->
+    <script type="text/javascript" src="../assets/js/tocNav.js"></script>
+
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Heaps | Computer Science Revision Guides</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Heaps" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Heaps (ADT) A heap is a binary tree storing keys at its nodes and satisfying the following properties: Heap-order, for every internal node other than the root (as it has no parent), the value of the node is greater than the value of the parent node Complete binary tree, the height of the tree is minimal for the number of the nodes it contains, and is filled from “left to right”. This is formally defined as: Let \(h\) be the height of the heap ​ Every layer of height \(i\) other than the lowest layer (\(i = h-1\)) has \(2^i\) nodes ​ In the lowest layer, the all internal nodes are to the left of external nodes The last node of the heap is the rightmost node of maximum depth Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Heaps can be used to implement priority queues Inserting into a heap First, insert the element to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, running in \(O(1)\) time, if a pointer to the position to insert is maintained Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Run the “upheap” algorithm to re-order the heap so that it fulfils the heap properties Repeatedly swap the inserted node with its parent, until either it reaches the root node, or it is larger than the parent node Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Since the heap has a height of \(O(log_2 n)\), performing a swap takes \(O(1)\) time, and the maximum number of swaps is the height of the heap, the upheap algorithm takes \(O(log_2 n)\), time In total, insertion takes \(O(log_2 n)\), time Removal from a heap The smallest item in the heap is the root node, so this value is stored and returned. However, we need to maintain heap properties as it is overwritten First, overwrite the value of the root node with the value of the last node, and remove the last node from the tree Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Run the “downheap” algorithm to re-order the heap so that it fulfils the heap properties Let p &lt;- the root node Let c &lt;- the child of p with the minimal key (right if existent, otherwise left) If the value of p is less than or equal to the value of c Stop, since the heap order property is fulfilled Else Swap the values of p and c Run the downheap algorithm again with the root node (p) now as the child node (c) Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser As with upheap, since the heap has a height of \(O(log_2 n)\), performing a swap takes \(O(1)\) time, and the maximum number of swaps is the height of the heap, the downheap algorithm takes \(O(log_2 n)\), time Since the heap can be used to implement priority queues, it can be used for sorting as with list based implementations, which resulted in selection and insertion sort. This is called a heap sort The steps taken in the sort are: Enqueue \(n\) elements, with each enqueueing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time Dequeue all \(n\) items, with each Dequeuing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time Hence, the total time complexity is \(O(n \cdot log n)\) This is one of the fastest classes of sorting algorithm, much more efficient than insertion or selection Concrete implementations Any tree implementation can be used for a heap, as it merely modifies the way getters and setters work, not the internal data structures The main draw-back of array based implementations of space inefficiency for unbalanced trees is a non-issue for heaps, as they are implicitly balanced, so they are often used" />
+<meta property="og:description" content="Heaps (ADT) A heap is a binary tree storing keys at its nodes and satisfying the following properties: Heap-order, for every internal node other than the root (as it has no parent), the value of the node is greater than the value of the parent node Complete binary tree, the height of the tree is minimal for the number of the nodes it contains, and is filled from “left to right”. This is formally defined as: Let \(h\) be the height of the heap ​ Every layer of height \(i\) other than the lowest layer (\(i = h-1\)) has \(2^i\) nodes ​ In the lowest layer, the all internal nodes are to the left of external nodes The last node of the heap is the rightmost node of maximum depth Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Heaps can be used to implement priority queues Inserting into a heap First, insert the element to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, running in \(O(1)\) time, if a pointer to the position to insert is maintained Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Run the “upheap” algorithm to re-order the heap so that it fulfils the heap properties Repeatedly swap the inserted node with its parent, until either it reaches the root node, or it is larger than the parent node Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Since the heap has a height of \(O(log_2 n)\), performing a swap takes \(O(1)\) time, and the maximum number of swaps is the height of the heap, the upheap algorithm takes \(O(log_2 n)\), time In total, insertion takes \(O(log_2 n)\), time Removal from a heap The smallest item in the heap is the root node, so this value is stored and returned. However, we need to maintain heap properties as it is overwritten First, overwrite the value of the root node with the value of the last node, and remove the last node from the tree Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Run the “downheap” algorithm to re-order the heap so that it fulfils the heap properties Let p &lt;- the root node Let c &lt;- the child of p with the minimal key (right if existent, otherwise left) If the value of p is less than or equal to the value of c Stop, since the heap order property is fulfilled Else Swap the values of p and c Run the downheap algorithm again with the root node (p) now as the child node (c) Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser As with upheap, since the heap has a height of \(O(log_2 n)\), performing a swap takes \(O(1)\) time, and the maximum number of swaps is the height of the heap, the downheap algorithm takes \(O(log_2 n)\), time Since the heap can be used to implement priority queues, it can be used for sorting as with list based implementations, which resulted in selection and insertion sort. This is called a heap sort The steps taken in the sort are: Enqueue \(n\) elements, with each enqueueing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time Dequeue all \(n\) items, with each Dequeuing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time Hence, the total time complexity is \(O(n \cdot log n)\) This is one of the fastest classes of sorting algorithm, much more efficient than insertion or selection Concrete implementations Any tree implementation can be used for a heap, as it merely modifies the way getters and setters work, not the internal data structures The main draw-back of array based implementations of space inefficiency for unbalanced trees is a non-issue for heaps, as they are implicitly balanced, so they are often used" />
+<link rel="canonical" href="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part8.html" />
+<meta property="og:url" content="https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part8.html" />
+<meta property="og:site_name" content="Computer Science Revision Guides" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-05-12T14:53:39+00:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Heaps" />
+<script type="application/ld+json">
+{"description":"Heaps (ADT) A heap is a binary tree storing keys at its nodes and satisfying the following properties: Heap-order, for every internal node other than the root (as it has no parent), the value of the node is greater than the value of the parent node Complete binary tree, the height of the tree is minimal for the number of the nodes it contains, and is filled from “left to right”. This is formally defined as: Let \\(h\\) be the height of the heap ​ Every layer of height \\(i\\) other than the lowest layer (\\(i = h-1\\)) has \\(2^i\\) nodes ​ In the lowest layer, the all internal nodes are to the left of external nodes The last node of the heap is the rightmost node of maximum depth Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Heaps can be used to implement priority queues Inserting into a heap First, insert the element to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, running in \\(O(1)\\) time, if a pointer to the position to insert is maintained Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Run the “upheap” algorithm to re-order the heap so that it fulfils the heap properties Repeatedly swap the inserted node with its parent, until either it reaches the root node, or it is larger than the parent node Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Since the heap has a height of \\(O(log_2 n)\\), performing a swap takes \\(O(1)\\) time, and the maximum number of swaps is the height of the heap, the upheap algorithm takes \\(O(log_2 n)\\), time In total, insertion takes \\(O(log_2 n)\\), time Removal from a heap The smallest item in the heap is the root node, so this value is stored and returned. However, we need to maintain heap properties as it is overwritten First, overwrite the value of the root node with the value of the last node, and remove the last node from the tree Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser Run the “downheap” algorithm to re-order the heap so that it fulfils the heap properties Let p &lt;- the root node Let c &lt;- the child of p with the minimal key (right if existent, otherwise left) If the value of p is less than or equal to the value of c Stop, since the heap order property is fulfilled Else Swap the values of p and c Run the downheap algorithm again with the root node (p) now as the child node (c) Image source: Data Structures and Algorithms in Java, Goodrich, Tamassia, Goldwasser As with upheap, since the heap has a height of \\(O(log_2 n)\\), performing a swap takes \\(O(1)\\) time, and the maximum number of swaps is the height of the heap, the downheap algorithm takes \\(O(log_2 n)\\), time Since the heap can be used to implement priority queues, it can be used for sorting as with list based implementations, which resulted in selection and insertion sort. This is called a heap sort The steps taken in the sort are: Enqueue \\(n\\) elements, with each enqueueing taking \\(O(log n)\\) time, so the total time is \\(O(n \\cdot log n)\\) time Dequeue all \\(n\\) items, with each Dequeuing taking \\(O(log n)\\) time, so the total time is \\(O(n \\cdot log n)\\) time Hence, the total time complexity is \\(O(n \\cdot log n)\\) This is one of the fastest classes of sorting algorithm, much more efficient than insertion or selection Concrete implementations Any tree implementation can be used for a heap, as it merely modifies the way getters and setters work, not the internal data structures The main draw-back of array based implementations of space inefficiency for unbalanced trees is a non-issue for heaps, as they are implicitly balanced, so they are often used","headline":"Heaps","dateModified":"2021-05-12T14:53:39+00:00","datePublished":"2021-05-12T14:53:39+00:00","url":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part8.html","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://github.com/pages/CSRG-Group/dcs-notes.github.io/CS126/part8.html"},"@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preload" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" as="style"
+        type="text/css" crossorigin>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="stylesheet" href="/pages/CSRG-Group/dcs-notes.github.io/assets/css/style.css?v=c7cba74afde9610b1e7114060896a196d092ead3">
+</head>
+
+<body>
+    <header style="padding:10px;" class="page-header" role="banner">
+        <h1 class="project-name">Heaps</h1>
+    </header>
+    <div id="mainGrid" class="container">
+        <div class="navBox">
+            <div id="sidenav" class="sideNav closedNav">
+                <h2 style="margin-left: 10px;">Table of Contents</h2><ul><li><a href="#heaps-adt">Heaps (ADT)</a></li></ul>
+</div>
+        </div>
+        <div title="Table of Contents" class="buttonCol" onclick="toggleNav()">
+            <div class="navArrow">
+                <i></i>
+            </div>
+        </div>
+        <div class="contents">
+            <main id="content" class="main-content" role="main">
+                <div class="partNav"><a href="/CS126/part7.html" title="Skip lists">👈Prev</a><a href="./" title="CS126 Home">🏡CS126</a><a href="/CS126/part9.html" title="Priority queues">Next👉</a></div>
+                <!-- Main Content of markdown or sub-layouts-->
+                <!-- Each module has its own layout to allow module layouts to be customised -->
+<!-- The layout name is also used by the notes layout to display the correct module code -->
+
+<h1 id="heaps-adt">Heaps (ADT)</h1>
+<ul>
+  <li>A heap is a binary tree storing keys at its nodes and satisfying the following properties:
+    <ul>
+      <li>Heap-order, for every internal node other than the root (as it has no parent), the value of the node is greater than the value of the parent node</li>
+      <li>Complete binary tree, the height of the tree is minimal for the number of the nodes it contains, and is filled from “left to right”. This is formally defined as:
+        <blockquote>
+          <p>Let \(h\) be the height of the heap</p>
+
+          <p>​	Every layer of height \(i\) other than the lowest layer (\(i = h-1\)) has \(2^i\) nodes</p>
+
+          <p>​	In the lowest layer, the all internal nodes are to the left of external nodes</p>
+        </blockquote>
+      </li>
+      <li>The last node of the heap is the rightmost node of maximum depth
+<img src="./images/heapDiagram.png" alt="heapDiagram" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+    </ul>
+  </li>
+  <li>Heaps can be used to implement priority queues</li>
+  <li>Inserting into a heap
+    <ul>
+      <li>First, insert the element to its temporary position of the rightmost node of maximum depth, so that it fills from left to right, running in \(O(1)\) time, if a pointer to the position to insert is maintained
+<img src="./images/heapInsertOne.png" alt="heapInsertOne" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+      <li>Run the “upheap” algorithm to re-order the heap so that it fulfils the heap properties
+        <ul>
+          <li>Repeatedly swap the inserted node with its parent, until either it reaches the root node, or it is larger than the parent node
+<img src="./images/heapInsertTwo.png" alt="heapInsertTwo" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+          <li>Since the heap has a height of \(O(log_2 n)\), performing a swap takes \(O(1)\) time, and the maximum number of swaps is the height of the heap, the upheap algorithm takes \(O(log_2 n)\), time</li>
+        </ul>
+      </li>
+      <li>In total, insertion takes \(O(log_2 n)\), time</li>
+    </ul>
+  </li>
+  <li>Removal from a heap
+    <ul>
+      <li>The smallest item in the heap is the root node, so this value is stored and returned. However, we need to maintain heap properties as it is overwritten</li>
+      <li>First, overwrite the value of the root node with the value of the last node, and remove the last node from the tree
+<img src="./images/heapRemoveOne.png" alt="heapRemoveOne" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</li>
+      <li>Run the “downheap” algorithm to re-order the heap so that it fulfils the heap properties
+        <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Let p &lt;- the root node
+Let c &lt;- the child of p with the minimal key (right if existent, otherwise left)
+If the value of p is less than or equal to the value of c
+	Stop, since the heap order property is fulfilled
+Else
+	Swap the values of p and c
+	Run the downheap algorithm again with the root node (p) now as the child node (c)
+</code></pre></div>        </div>
+        <p><img src="./images/heapRemoveTwo.png" alt="heapRemoveTwo" />
+Image source: <em>Data Structures and Algorithms in Java</em>, Goodrich, Tamassia, Goldwasser</p>
+      </li>
+      <li>As with upheap, since the heap has a height of \(O(log_2 n)\), performing a swap takes \(O(1)\) time, and the maximum number of swaps is the height of the heap, the downheap algorithm takes \(O(log_2 n)\), time</li>
+    </ul>
+  </li>
+  <li>Since the heap can be used to implement priority queues, it can be used for sorting as with list based implementations, which resulted in selection and insertion sort. This is called a heap sort
+    <ul>
+      <li>The steps taken in the sort are:
+        <ol>
+          <li>Enqueue \(n\) elements, with each enqueueing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time</li>
+          <li>Dequeue all \(n\) items, with each Dequeuing taking \(O(log n)\) time, so the total time is \(O(n \cdot log n)\) time
+Hence, the total time complexity is \(O(n \cdot log n)\)</li>
+        </ol>
+      </li>
+      <li>This is one of the fastest classes of sorting algorithm, much more efficient than insertion or selection</li>
+    </ul>
+  </li>
+  <li>Concrete implementations
+    <ul>
+      <li>Any tree implementation can be used for a heap, as it merely modifies the way getters and setters work, not the internal data structures</li>
+      <li>The main draw-back of array based implementations of space inefficiency for unbalanced trees is a non-issue for heaps, as they are implicitly balanced, so they are often used</li>
+    </ul>
+  </li>
+</ul>
+
+
+                
+                <footer class="site-footer">
+                    
+                    <span class="site-footer-owner"><a href="https://github.com/CSRG-Group/dcs-notes.github.io">dcs-notes.github.io</a> is maintained by <a href="https://github.com/CSRG-Group">CSRG-Group</a>.</span>
+                    
+                    <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub
+                            Pages</a>.</span>
+                </footer>
+            </main>
+        </div>
+    </div>
+</body>
+
+</html>
